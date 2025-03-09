@@ -12,8 +12,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping(value = "/location")
+@RequestMapping("/location-service")
 public class LocationController {
 
     private static final Logger logger = LoggerFactory.getLogger(LocationController.class);
@@ -21,19 +23,25 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
-    @PostMapping(value = "/save-location", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/location", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LocationReq> saveLocation(@RequestBody LocationReq locationReq){
-
+        logger.info("saveLocation() started");
         LocationReq locationResponse = locationService.saveLocation(locationReq);
+        logger.info("saveLocation() completed");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(locationResponse);
     }
 
-    @GetMapping("/temperature/{locationName}")
-    public ResponseEntity<LocationRes> getLocation(@PathVariable String locationName){
+    @GetMapping(value = "/location/{locationId}")
+    public ResponseEntity<LocationReq> getLocation(@PathVariable("locationId") Long locationId){
+        logger.info("getLocation() started");
+        LocationReq locationResponse = locationService.getLocationId(locationId);
+        logger.info("getLocation() completed");
+        return ResponseEntity.status(HttpStatus.OK).body(locationResponse);
+    }
 
-        LocationRes locationRes = locationService.getLocation(locationName);
-
-        return ResponseEntity.status(HttpStatus.OK).body(locationRes);
+    @GetMapping("/locations")
+    public ResponseEntity<List<LocationReq>> getLocationList(){
+        return ResponseEntity.ok().body(locationService.getLocationList());
     }
 }

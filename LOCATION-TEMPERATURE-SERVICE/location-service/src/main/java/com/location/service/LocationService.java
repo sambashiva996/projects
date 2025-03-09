@@ -4,8 +4,12 @@ import com.location.entity.Location;
 import com.location.model.LocationReq;
 import com.location.model.LocationRes;
 
+import java.util.List;
+
 public interface LocationService {
     LocationReq saveLocation(LocationReq locationReq);
 
-    LocationRes getLocation(String locationName);
+    LocationReq getLocationId(Long locationId);
+
+    List<LocationReq> getLocationList();
 }

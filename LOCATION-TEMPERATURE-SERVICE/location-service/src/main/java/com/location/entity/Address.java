@@ -1,5 +1,6 @@
 package com.location.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,4 +16,8 @@ public class Address {
     private String city;
     private String country;
     private String pinCode;
+    @ManyToOne
+    @JoinColumn(name = "locationSeqId", insertable = false, updatable = false)
+    @JsonIgnore
+    private Location location;
 }

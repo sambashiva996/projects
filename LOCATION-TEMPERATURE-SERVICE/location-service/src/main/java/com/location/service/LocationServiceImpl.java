@@ -7,17 +7,23 @@ import com.location.model.LocationRes;
 import com.location.model.Temperature;
 import com.location.repository.AddressRepository;
 import com.location.repository.LocationRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
+@Transactional
 @Service
-public class LocationServiceImpl implements LocationService{
+public class LocationServiceImpl implements LocationService {
 
     @Autowired
     private LocationRepository locationRepository;
@@ -29,51 +35,42 @@ public class LocationServiceImpl implements LocationService{
     public LocationReq saveLocation(LocationReq locationReq) {
 
         Location location = new Location();
-        location.setName(locationReq.getName().toLowerCase());
+        BeanUtils.copyProperties(locationReq, location);
 
         Location locationRes = locationRepository.save(location);
 
         Address address = new Address();
         address.setLocationSeqId(locationRes.getLocationSeqId());
-        address.setCity(locationReq.getCity().toLowerCase());
-        address.setCountry(locationReq.getCountry().toLowerCase());
+        address.setCity(locationReq.getCity());
+        address.setCountry(locationReq.getCountry());
         address.setPinCode(locationReq.getPinCode());
 
         addressRepository.save(address);
 
+        locationReq.setLocationSeqId(locationRes.getLocationSeqId());
         return locationReq;
     }
 
     @Override
-    public LocationRes getLocation(String locationName) {
-
-        Location location = locationRepository.findByName(locationName);
-
-        WebClient webClient = WebClient
-                .builder()
-                .baseUrl("http://localhost:9002")
-                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .defaultUriVariables(Collections.singletonMap("url", "http://localhost:9002"))
-                .build();
-
-        Mono<Temperature> temperatureMono = webClient
-                .get()
-                .uri("/temperature/"+location.getName())
-                .retrieve()
-                .bodyToMono(Temperature.class);
-
-        Temperature block = temperatureMono.block();
-
-        LocationRes locationRes = new LocationRes();
-        locationRes.setName(block.getCity());
-        locationRes.setCountry(locationRes.getCountry());
-        locationRes.setPinCode(locationRes.getPinCode());
-        locationRes.setCity(locationRes.getName());
-        locationRes.setTemperatureSeqId(block.getTemperatureSeqId());
-        locationRes.setTemperatureValue(block.getTemperatureValue());
-        locationRes.setTemperatureLevel(block.getTemperatureLevel());
-        locationRes.setLocationSeqId(location.getLocationSeqId());
-
+    public LocationReq getLocationId(Long locationId) {
+        Optional<Location> optionalLocation = locationRepository.findById(locationId);
+        LocationReq locationRes = new LocationReq();
+        optionalLocation.ifPresent(location -> BeanUtils.copyProperties(location, locationRes));
         return locationRes;
+    }
+
+    @Override
+    public List<LocationReq> getLocationList() {
+        List<Location> locationList = locationRepository.findAll();
+
+        List<LocationReq> locationReqList = new ArrayList<>();
+
+        for (Location location : locationList) {
+            LocationReq locationReq = new LocationReq();
+            BeanUtils.copyProperties(location, locationReq);
+            locationReqList.add(locationReq);
+        }
+
+        return locationReqList;
     }
 }

@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LocationReq {
+    private Long locationSeqId;
     private String name;
     private String city;
     private String country;
