@@ -9,6 +9,6 @@ public class HelloController {
 
     @GetMapping("/")
     public String helloSecurity(HttpServletRequest httpServletRequest){
-        return "Hello Security"+httpServletRequest.getSession().getId();
+        return "Hello Security "+httpServletRequest.getSession().getId();
     }
 }
