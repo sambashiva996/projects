@@ -2,8 +2,6 @@ package com.location.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
-
 @Data
 public class Temperature {
 	private Long temperatureSeqId;

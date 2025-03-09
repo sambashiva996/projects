@@ -1,8 +1,7 @@
 package com.temperature.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "TEMPERATURE")
@@ -10,8 +9,8 @@ import javax.persistence.*;
 public class Temperature {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq-id-gen")
-	@SequenceGenerator(name = "seq-id-gen", sequenceName = "TEMPERATURE_SEQ_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TEMPERATURE_SEQ")
+	@SequenceGenerator(name = "TEMPERATURE_SEQ", sequenceName = "TEMPERATURE_SEQ_ID")
 	private Long temperatureSeqId;
 	private String temperatureValue;
 	private String temperatureLevel;
