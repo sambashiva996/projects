@@ -32,7 +32,7 @@ public class LocationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(locationResponse);
     }
 
-    @GetMapping(value = "/location/{locationId}")
+    @GetMapping(value = "/location-by-id/{locationId}")
     public ResponseEntity<LocationReq> getLocation(@PathVariable("locationId") Long locationId){
         logger.info("getLocation() started");
         LocationReq locationResponse = locationService.getLocationId(locationId);
@@ -40,8 +40,24 @@ public class LocationController {
         return ResponseEntity.status(HttpStatus.OK).body(locationResponse);
     }
 
+    @GetMapping(value = "/location-by-name/{city}")
+    public ResponseEntity<LocationReq> getLocationByCity(@PathVariable("city") String city){
+        logger.info("getLocationByCity() started");
+        LocationReq locationResponse = locationService.getLocationByCity(city);
+        logger.info("getLocationByCity() completed");
+        return ResponseEntity.status(HttpStatus.OK).body(locationResponse);
+    }
+
     @GetMapping("/locations")
     public ResponseEntity<List<LocationReq>> getLocationList(){
-        return ResponseEntity.ok().body(locationService.getLocationList());
+        logger.info("getLocationList() started");
+        List<LocationReq> locationList = locationService.getLocationList();
+        logger.info("getLocationList() completed");
+        return ResponseEntity.ok().body(locationList);
+    }
+
+    @GetMapping("/")
+    public String hello(){
+        return "Hello World";
     }
 }

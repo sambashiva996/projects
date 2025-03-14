@@ -1,5 +1,6 @@
 package com.location.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.location.entity.Address;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,4 +17,10 @@ public class LocationReq {
     private String city;
     private String country;
     private String pinCode;
+    @JsonIgnore
+    private Long temperatureSeqId;
+    @JsonIgnore
+    private String temperatureValue;
+    @JsonIgnore
+    private String temperatureLevel;
 }

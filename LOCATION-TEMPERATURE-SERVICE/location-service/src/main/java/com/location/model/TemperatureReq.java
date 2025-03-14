@@ -1,4 +1,4 @@
-package com.temperature.model;
+package com.location.model;
 
 import lombok.Data;
 

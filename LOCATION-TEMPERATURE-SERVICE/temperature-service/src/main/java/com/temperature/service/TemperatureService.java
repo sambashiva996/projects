@@ -3,8 +3,12 @@ package com.temperature.service;
 import com.temperature.entity.Temperature;
 import com.temperature.model.TemperatureReq;
 
-public interface TemperatureService {
-    Temperature saveTemperature(TemperatureReq temperatureReq);
+import java.util.List;
 
-    Temperature getTemperature(String temperatureName);
+public interface TemperatureService {
+    TemperatureReq saveTemperature(TemperatureReq temperatureReq);
+
+    TemperatureReq getTemperature(String temperatureName);
+
+    List<TemperatureReq> getTemperatureList();
 }
