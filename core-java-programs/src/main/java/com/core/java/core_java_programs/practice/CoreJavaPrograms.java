@@ -18,7 +18,7 @@ public class CoreJavaPrograms {
 
         List<CreditCard> creditCardList = CreditCard.getCreditCard();
 
-        convertStringArrayToCharaterArray();
+//        convertStringArrayToCharaterArray();
 ////////////////////////////////////////////////////////////////////
 //        rotateArrays();
         //////////////////////////////////////////////////////////
