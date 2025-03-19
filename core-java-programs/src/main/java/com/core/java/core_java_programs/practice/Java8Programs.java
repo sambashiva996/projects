@@ -14,7 +14,7 @@ public class Java8Programs {
         String s = "Samba shivudu ambati";
 
         Map<String, Long> charAndCountOfChars = Arrays.stream(s.split(""))
-                .map(sChar -> sChar.toLowerCase())
+                .map(String::toLowerCase)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         System.out.println(charAndCountOfChars);
@@ -28,7 +28,7 @@ public class Java8Programs {
                 .entrySet()
                 .stream()
                 .filter(map -> map.getValue() > 1)
-                .map(map -> map.getKey())
+                .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
         System.out.println(duplicateCharList);
@@ -41,7 +41,7 @@ public class Java8Programs {
         List<String> uniqueElements = Arrays.stream(s3.split(""))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream().filter(map -> map.getValue() == 1)
-                .map(map -> map.getKey()).collect(Collectors.toList());
+                .map(Map.Entry::getKey).collect(Collectors.toList());
 
         System.out.println(uniqueElements);
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +55,7 @@ public class Java8Programs {
                 .entrySet()
                 .stream()
                 .filter(c -> c.getValue() == 1)
-                .map(m -> m.getKey())
+                .map(Map.Entry::getKey)
                 .findFirst();
 
         System.out.println(firstNonRepeatChar.get());
@@ -72,6 +72,8 @@ public class Java8Programs {
         int[] slicedResult = Arrays.copyOfRange(originalIntArray, startIndex, lastIndex);
         /*OR*/
         int[] array = IntStream.range(startIndex, lastIndex).map(index -> originalIntArray[index]).toArray();
+        /*OR*/
+        List<Integer> collect1 = Arrays.stream(originalIntArray, startIndex, lastIndex).boxed().toList();
 
         System.out.println(Arrays.toString(slicedResult));
 /// ///////////////////////////////////////////////////////////////////////////////////////////
@@ -138,11 +140,17 @@ public class Java8Programs {
 ////////////////////////////////////////////////////////////////////////////////////////
 
         /*convert String Array to character array*/
-        List<String> list = Arrays.asList("good", "morning");
+        List<String> list = Arrays.asList("samba", "shivudu");
 
         char[] charArray = list.stream().collect(Collectors.joining()).toCharArray();
 
-        System.out.println(Arrays.toString(charArray));
+        //OR
+
+        List<Character> collect2 = list.stream().flatMapToInt(String::chars).mapToObj(m -> (char) m).collect(Collectors.toList());
+
+        System.out.println(collect2);
 /////////////////////////////////////////////////////////////////////////////////////////
+
+
     }
 }
