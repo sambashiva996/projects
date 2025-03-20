@@ -18,8 +18,8 @@ public class SingletonDesignPattern {
     }
 
     public static void main(String[] args) {
-        SingletonDesignPattern singletonDesignPattern = new SingletonDesignPattern();
-        SingletonDesignPattern singletonDesignPattern1 = new SingletonDesignPattern();
+        SingletonDesignPattern singletonDesignPattern = SingletonDesignPattern.getInstance();
+        SingletonDesignPattern singletonDesignPattern1 = SingletonDesignPattern.getInstance();
 
         System.out.println(singletonDesignPattern);
         System.out.println(singletonDesignPattern1);
