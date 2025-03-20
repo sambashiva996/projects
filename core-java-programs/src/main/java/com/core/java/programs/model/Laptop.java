@@ -1,61 +1,27 @@
 package com.core.java.programs.model;
 
-import java.util.Objects;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Laptop {
-    int id;
-    String name;
+    Integer id;
+    String brand;
     String model;
+    Double price;
 
-    public Laptop(int id, String name, String model) {
-        this.id = id;
-        this.name = name;
-        this.model = model;
+    public static List<Laptop> getLaptopList(){
+        return Arrays.asList(new Laptop(2, "samsung", "A1", 50000d),
+                new Laptop(2, "apple", "A1", 60000d),
+                new Laptop(2, "acer", "A2", 40000d),
+                new Laptop(2, "hp", "A3", 55000d),
+                new Laptop(2, "dell", "A4", 65000d));
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    @Override
-    public String toString() {
-        return "Laptop{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", model='" + model + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Laptop laptop = (Laptop) o;
-        return id == laptop.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
