@@ -17,7 +17,7 @@ public class Java8Programs {
                 .map(String::toLowerCase)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        System.out.println(charAndCountOfChars);
+//        System.out.println(charAndCountOfChars);
 /// //////////////////////////////////////////////////////////////////////////////////////////
         /*print all duplicate elements from given string*/
 
@@ -31,7 +31,7 @@ public class Java8Programs {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
-        System.out.println(duplicateCharList);
+//        System.out.println(duplicateCharList);
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
         /*print all unique elements from given string*/
@@ -43,7 +43,7 @@ public class Java8Programs {
                 .entrySet().stream().filter(map -> map.getValue() == 1)
                 .map(Map.Entry::getKey).collect(Collectors.toList());
 
-        System.out.println(uniqueElements);
+//        System.out.println(uniqueElements);
 //////////////////////////////////////////////////////////////////////////////////////////////
 
         /*print first non repeat character from given string*/
@@ -58,7 +58,7 @@ public class Java8Programs {
                 .map(Map.Entry::getKey)
                 .findFirst();
 
-        System.out.println(firstNonRepeatChar.get());
+//        System.out.println(firstNonRepeatChar.get());
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
         /*slice the array with custom start and last index from
@@ -75,7 +75,7 @@ public class Java8Programs {
         /*OR*/
         List<Integer> collect1 = Arrays.stream(originalIntArray, startIndex, lastIndex).boxed().toList();
 
-        System.out.println(Arrays.toString(slicedResult));
+//        System.out.println(Arrays.toString(slicedResult));
 /// ///////////////////////////////////////////////////////////////////////////////////////////
 
         /*print second-highest number from given array*/
@@ -88,7 +88,7 @@ public class Java8Programs {
                 .skip(1)
                 .findFirst();
 
-        System.out.println(secondHighestElement.get());
+//        System.out.println(secondHighestElement.get());
 //////////////////////////////////////////////////////////////////////////////////////////////
 
         /*print longest string from given array*/
@@ -97,20 +97,27 @@ public class Java8Programs {
 
         String longestString = Arrays.stream(strArray)
                 .sorted((c1,c2) -> c2.length()-c1.length())
-                .findFirst().get();
+                .findFirst()
+                .get();
         //OR using max method
-        String longestString1 = Arrays.stream(strArray).max(Comparator.comparing(String::length)).get();
+        String longestString1 = Arrays.stream(strArray)
+                .max(Comparator.comparing(String::length))
+                .get();
 
         //OR using reduce method
-        String s4 = Arrays.stream(strArray).reduce((w1, w2) -> w1.length() > w2.length() ? w1 : w2).get();
+        String s4 = Arrays.stream(strArray)
+                .reduce((w1, w2) -> w1.length() > w2.length() ? w1 : w2)
+                .get();
 
-        System.out.println(s4);
+//        System.out.println(s4);
 ////////////////////////////////////////////////////////////////////////////////////////////
 
         /*print smallest string from given array*/
 
-        String smallestStr = Arrays.stream(strArray).min(Comparator.comparing(String::length)).get();
-        System.out.println(smallestStr);
+        String smallestStr = Arrays.stream(strArray)
+                .min(Comparator.comparing(String::length))
+                .get();
+//        System.out.println(smallestStr);
 ////////////////////////////////////////////////////////////////////////////////////////////
 
        /*print all elements who start with 1 from given array*/
@@ -123,33 +130,51 @@ public class Java8Programs {
                 .filter(num -> num.startsWith("1"))
                 .collect(Collectors.toList());
 
-        System.out.println(numStartWith1);
+//        System.out.println(numStartWith1);
 //////////////////////////////////////////////////////////////////////////////////////////
 
         /*using String join method print all elements separated with -*/
 
         List<String> joinStr = Arrays.asList("2", "4", "5", "6");
         String join = String.join("-", joinStr);
-        System.out.println(join);
+//        System.out.println(join);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
         /*using limit and skip print specified values from range*/
-        List<Integer> collect = IntStream.rangeClosed(1, 6).boxed().skip(1).limit(4).collect(Collectors.toList());
-        System.out.println(collect);
+        List<Integer> collect = IntStream.rangeClosed(1, 6)
+                .boxed()
+                .skip(1)
+                .limit(4)
+                .collect(Collectors.toList());
+//        System.out.println(collect);
 ////////////////////////////////////////////////////////////////////////////////////////
 
         /*convert String Array to character array*/
         List<String> list = Arrays.asList("samba", "shivudu");
 
-        char[] charArray = list.stream().collect(Collectors.joining()).toCharArray();
+        char[] charArray = list.stream()
+                .collect(Collectors.joining())
+                .toCharArray();
 
         //OR
 
-        List<Character> collect2 = list.stream().flatMapToInt(String::chars).mapToObj(m -> (char) m).collect(Collectors.toList());
+        List<Character> collect2 = list.stream()
+                .flatMapToInt(String::chars)
+                .mapToObj(m -> (char) m)
+                .collect(Collectors.toList());
 
-        System.out.println(collect2);
+//        System.out.println(collect2);
 /////////////////////////////////////////////////////////////////////////////////////////
 
+        /*print count of each vowel from given string*/
+        String s5 = "sambashivuduambati";
+        List<Character> characterList = Arrays.asList('a', 'e', 'i', 'o', 'u');
+
+        Map<Character, Long> collect3 = s5.chars()
+                .mapToObj(str -> (char) str)
+                .filter(characterList::contains)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(collect3);
     }
 }

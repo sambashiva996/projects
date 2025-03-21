@@ -20,7 +20,7 @@ public class Sample {
         String s = "sambashivuduambati";
 
 		List<Character> characterList = Arrays.asList('a', 'e', 'i', 'o', 'u');
-		Map<Character, Long> collect1 = s.chars().boxed().map(c -> (char) (int) c).filter(f -> characterList.contains(f)).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		Map<Character, Long> collect1 = s.chars().boxed().map(c -> (char) (int) c).filter(characterList::contains).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 //		System.out.println(collect);
 
         List<String> list = Arrays.asList("good", "morning");
@@ -30,6 +30,8 @@ public class Sample {
 
         List<CreditCard> collect2 = objectList.stream().flatMap(List::stream).collect(Collectors.toList());
 //        System.out.println(collect1);
+
+
 
     }
 
