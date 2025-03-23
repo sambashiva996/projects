@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ComparatorMain {
     public static void main(String[] args) {
+        /*Comparator without Collections, java8 and any utility methods*/
         List<Integer> list = Arrays.asList(2,1,6,3,4,8);
 
         ComparatorImpl comparator = new ComparatorImpl();
