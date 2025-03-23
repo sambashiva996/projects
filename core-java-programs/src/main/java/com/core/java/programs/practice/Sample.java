@@ -31,8 +31,6 @@ public class Sample {
         List<CreditCard> collect2 = objectList.stream().flatMap(List::stream).collect(Collectors.toList());
 //        System.out.println(collect1);
 
-
-
     }
 
 

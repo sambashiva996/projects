@@ -41,7 +41,8 @@ public class Java8Programs {
         List<String> uniqueElements = Arrays.stream(s3.split(""))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream().filter(map -> map.getValue() == 1)
-                .map(Map.Entry::getKey).collect(Collectors.toList());
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
 
 //        System.out.println(uniqueElements);
 //////////////////////////////////////////////////////////////////////////////////////////////
