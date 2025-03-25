@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CoreJavaPrograms {
     public CoreJavaPrograms() {
@@ -22,7 +23,13 @@ public class CoreJavaPrograms {
 
 //        convertStringArrayToCharacterArray();
 ////////////////////////////////////////////////////////////////////
-        rotateArrays();
+
+        rotateArrayWithTimeComplexity();
+////////////////////////////////////////////////////////////////////
+
+//        rotateArrayUsingJava8();
+/////////////////////////////////////////////////////////////////
+//        rotateArrays();
         //////////////////////////////////////////////////////////
 
 //        sortArrayOfIntegers();
@@ -88,6 +95,39 @@ public class CoreJavaPrograms {
 //        countFrequencyOfElementsInString();
     }
 
+    // Rotate right by k positions using reverse method
+    private static void rotateArrayWithTimeComplexity() {
+        int[] arr = {1,2,3,4,5,6};
+        int rotate = 2;
+        int n = arr.length;
+        rotate = rotate % n; // Handle cases where rotate > n
+        reverse(arr, 0, n - 1);      // Reverse the whole array
+        reverse(arr, 0, rotate - 1);      // Reverse first rotate elements
+        reverse(arr, rotate, n - 1);//     Reverse remaining elements
+
+        System.out.println(Arrays.toString(arr));
+    }
+    // Helper function to reverse array from index 'start' to 'end'
+    private static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    private static void rotateArrayUsingJava8() {
+        //Using streams
+        int[] arr = {1,2,3,4,5,6};
+        int rotate = 2;
+
+        List<Integer> collect = IntStream.range(0, arr.length)
+                .mapToObj(m -> arr[(m - rotate + arr.length) % arr.length]) // Circular shift
+                .collect(Collectors.toList());
+        System.out.println(collect);
+    }
+
     private static void convertStringArrayToCharacterArray() {
         List<String> list = Arrays.asList("good", "morning");
 
@@ -95,6 +135,7 @@ public class CoreJavaPrograms {
 
         System.out.println(Arrays.toString(charArray));
     }
+
 
     private static void rotateArrays() {
         /*Without following time complexity*/

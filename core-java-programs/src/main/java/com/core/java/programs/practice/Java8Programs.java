@@ -176,6 +176,15 @@ public class Java8Programs {
                 .mapToObj(str -> (char) str)
                 .filter(characterList::contains)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        System.out.println(collect3);
+//        System.out.println(collect3);
+////////////////////////////////////////////////////////////////////////////////////////
+        /*rotate array of integers by given number like 2 and 2 numbers should be rotate */
+        int[] arr = {1,2,3,4,5,6};
+        int rotate = 2;
+
+        List<Integer> collect5 = IntStream.range(0, arr.length)
+                .mapToObj(m -> arr[(m - rotate + arr.length) % arr.length]) // Circular shift
+                .collect(Collectors.toList());
+        System.out.println(collect5);
     }
 }
