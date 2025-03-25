@@ -20,7 +20,7 @@ public class CoreJavaPrograms {
 
 
 
-//        convertStringArrayToCharaterArray();
+//        convertStringArrayToCharacterArray();
 ////////////////////////////////////////////////////////////////////
         rotateArrays();
         //////////////////////////////////////////////////////////
@@ -88,7 +88,7 @@ public class CoreJavaPrograms {
 //        countFrequencyOfElementsInString();
     }
 
-    private static void convertStringArrayToCharaterArray() {
+    private static void convertStringArrayToCharacterArray() {
         List<String> list = Arrays.asList("good", "morning");
 
         char[] charArray = list.stream().collect(Collectors.joining()).toCharArray();
@@ -97,35 +97,31 @@ public class CoreJavaPrograms {
     }
 
     private static void rotateArrays() {
-        int[] arr = {2,3,4,5,6};
-        int rotate = 2;
+        /*Without following time complexity*/
+        int[] arr = {1,2,3,4,5,6};
+        int rotateNum = 2;
         int length = arr.length;
+        int rotateSize = length-rotateNum;
+        int[] newArr = new int[length];
 
         String temp = "";
-        int c = 0;
-        int[] newArr = new int[length];
-        /*below loop is for extracting rotation numbers from given array*/
-        for (int i = 0; i < rotate; i++){
-           temp = temp+arr[i]+" ";
-        }
-        /*below loop is for extracting non rotation numbers from Array to new Array*/
-        for (int j = rotate; j < arr.length; j++){
-            newArr[c] = arr[j];
-            c++;
+        for (int i = rotateSize; i < length; i++){
+            temp = temp+arr[i];
         }
 
-        /*below loops are merging rotation numbers to new Array*/
-        for (String temp1 : temp.trim().split(" ")){
-        for (int k = 0; k < newArr.length; k++){
-            if (newArr[k] == 0){
-                int parseInt = Integer.parseInt(temp1);
-                newArr[k] = parseInt;
-                /*break is for stop the loop once if condition matches and continue for next element from temp*/
-                break;
-            }
+        int count = rotateNum;
+        for (int j = 0; j < rotateSize; j++){
+            newArr[count]=arr[j];
+            count++;
         }
+        count = 0;
+        for (String s : temp.split("")){
+            newArr[count]=Integer.parseInt(s);
+            count++;
         }
+
         System.out.println(Arrays.toString(newArr));
+
     }
 
     private static boolean checkIsAlphaNumeric(String creditCardNumber) {
