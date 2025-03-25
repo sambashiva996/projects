@@ -1,6 +1,7 @@
 package com.core.java.programs.comparator;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class ComparatorMain {
@@ -28,5 +29,13 @@ public class ComparatorMain {
                 }
             }
         }
+    }
+}
+
+
+class ComparatorImpl implements Comparator<Integer> {
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        return o1 - o2;
     }
 }
