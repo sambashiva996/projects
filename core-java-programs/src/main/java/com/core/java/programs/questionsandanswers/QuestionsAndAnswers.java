@@ -10,6 +10,7 @@ public class QuestionsAndAnswers {
     * 6. What is diff btw Integer.parseInt and Integer.valueOf in java ?
     * 7. How to cover test case for static method which is in injected mock class in current class in spring boot?
     * 8. What is diff btw (a==1) & (b==2) and (a==1) && (b==2) ?
+    * 9. Why wait and notify methods are in Object class ?
     *
     * */
 }

@@ -2,6 +2,7 @@ package com.core.java.programs.threads;
 
 public class SharedResource {
     private boolean isOdd = true;
+
     public synchronized void printOdd(int oddNum) {
 
         while (!isOdd) {
@@ -12,7 +13,7 @@ public class SharedResource {
             }
         }
 
-        System.out.println(Thread.currentThread().getName()+" : "+oddNum);
+        System.out.println(Thread.currentThread().getName() + " : " + oddNum);
         isOdd = false;
         notify();
     }
@@ -27,7 +28,7 @@ public class SharedResource {
             }
         }
 
-        System.out.println(Thread.currentThread().getName()+" : "+evenNum);
+        System.out.println(Thread.currentThread().getName() + " : " + evenNum);
         isOdd = true;
         notify();
     }
