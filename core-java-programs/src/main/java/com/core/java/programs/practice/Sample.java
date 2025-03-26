@@ -4,6 +4,7 @@ import com.core.java.programs.model.CreditCard;
 import com.core.java.programs.model.Laptop;
 import com.core.java.programs.model.Student;
 
+import java.math.BigInteger;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -52,13 +53,11 @@ public class Sample {
 
     private static int factorial(int fact) {
         // 5*4*3*2*1 = 120
-        int r = 0;
-        while (fact > 0){
-
-           r = fact * (fact - 1);
-
-        }
-        return r;
+       if (fact == 0){
+           return 1;
+       }else {
+           return fact * factorial(fact-1);
+       }
     }
 
     private static void rotateArray() {
