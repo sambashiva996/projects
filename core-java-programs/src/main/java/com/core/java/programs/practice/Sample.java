@@ -1,13 +1,12 @@
 package com.core.java.programs.practice;
 
 import com.core.java.programs.model.CreditCard;
-import com.core.java.programs.model.Laptop;
 import com.core.java.programs.model.Student;
 
-import java.math.BigInteger;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
 
 public class Sample {
     public static void main(String[] args) {
@@ -17,9 +16,12 @@ public class Sample {
         objectList.add(creditCardList);
 
         List<Student> studentList = Student.getStudentList();
+/////////////////////////////////////////////////////////////////////////
 
+//        keyPadMobile();
+/// ///////////////////////////////////////////////////////////////////
         int fact = 5;
-        System.out.println(factorial(fact));
+//        System.out.println(factorial(fact));
 
         String collect4 = studentList.stream().sorted(Comparator.comparingInt(Student::getAge)).map(s -> s.getLastName()).collect(Collectors.joining("/"));
 
@@ -49,6 +51,64 @@ public class Sample {
         List<CreditCard> collect2 = objectList.stream().flatMap(List::stream).collect(Collectors.toList());
 //        System.out.println(collect1);
 
+    }
+
+    private static void keyPadMobile() {
+        //input :
+//        2 abc
+//        3 def
+//        4 ghi
+//        5 jkl
+//        6 mno
+//        7 pqrs
+//        8 tuv
+//        9 wxyz
+//output : 23 = ad, ae, af, bd, be, bf, cd, ce, cf
+
+        Map<Integer, String> map = new HashMap<>();
+        map.put(2, "abc");
+        map.put(3, "def");
+        map.put(4, "ghi");
+        map.put(5, "jkl");
+        map.put(6, "mno");
+        map.put(7, "pqrs");
+        map.put(8, "tuv");
+        map.put(9, "wxyz");
+
+        String input = "23";
+
+        StringBuffer sb = new StringBuffer();
+        String[] split = input.split("");
+//        for (String s : input.split("")){
+        Integer num = Integer.parseInt(split[0]);
+        Integer num1 = Integer.parseInt(split[1]);
+
+        Set<Map.Entry<Integer, String>> entries = map.entrySet();
+
+        String s1 = "";
+        String s2 = "";
+        List<String> list1 = new ArrayList<>();
+        for (Map.Entry<Integer, String> entry : entries){
+
+            if (entry.getKey().equals(num)){
+                s1 = s1+entry.getValue();
+            }
+
+            if (entry.getKey().equals(num1)){
+                s2 = s2+entry.getValue();
+            }
+        }
+
+        for (int i = 0; i < s1.length(); i++){
+
+            for (int j = 0; j < s2.length(); j++){
+                String s = s1.charAt(i) + "" + s2.charAt(j);
+                list1.add(s);
+            }
+        }
+
+        String join = String.join(", ", list1);
+        System.out.println(join);
     }
 
     private static int factorial(int fact) {

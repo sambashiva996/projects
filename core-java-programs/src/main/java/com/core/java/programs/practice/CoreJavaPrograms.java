@@ -18,9 +18,8 @@ public class CoreJavaPrograms {
     public static void main(String[] args) {
 
         List<CreditCard> creditCardList = CreditCard.getCreditCard();
-
-
-
+/// ////////////////////////////////////////////////////////////////
+        keyPadMobile();
 //        convertStringArrayToCharacterArray();
 ////////////////////////////////////////////////////////////////////
 
@@ -95,9 +94,69 @@ public class CoreJavaPrograms {
 //        countFrequencyOfElementsInString();
     }
 
+    private static void keyPadMobile() {
+        /*
+        * Print the combination if keypad letters based on given input combination
+        * input :
+          2 abc
+          3 def
+          4 ghi
+          5 jkl
+          6 mno
+          7 pqrs
+          8 tuv
+          9 wxyz
+         * output : 23 = ad, ae, af, bd, be, bf, cd, ce, cf
+         * */
+
+        Map<Integer, String> map = new HashMap<>();
+        map.put(2, "abc");
+        map.put(3, "def");
+        map.put(4, "ghi");
+        map.put(5, "jkl");
+        map.put(6, "mno");
+        map.put(7, "pqrs");
+        map.put(8, "tuv");
+        map.put(9, "wxyz");
+
+        String input = "23";
+
+        StringBuffer sb = new StringBuffer(); // not used if require can use
+        String[] split = input.split("");
+
+        Integer num = Integer.parseInt(split[0]);
+        Integer num1 = Integer.parseInt(split[1]);
+
+        Set<Map.Entry<Integer, String>> entries = map.entrySet();
+
+        String s1 = "";
+        String s2 = "";
+        List<String> list1 = new ArrayList<>();
+        for (Map.Entry<Integer, String> entry : entries) {
+
+            if (entry.getKey().equals(num)) {
+                s1 = s1 + entry.getValue();
+            }
+            if (entry.getKey().equals(num1)) {
+                s2 = s2 + entry.getValue();
+            }
+        }
+
+        for (int i = 0; i < s1.length(); i++) {
+
+            for (int j = 0; j < s2.length(); j++) {
+                String s = s1.charAt(i) + "" + s2.charAt(j);
+                list1.add(s);
+            }
+        }
+
+        String join = String.join(", ", list1);
+        System.out.println(join);
+    }
+
     // Rotate right by k positions using reverse method
     private static void rotateArrayWithTimeComplexity() {
-        int[] arr = {1,2,3,4,5,6};
+        int[] arr = {1, 2, 3, 4, 5, 6};
         int rotate = 2;
         int n = arr.length;
         rotate = rotate % n; // Handle cases where rotate > n
@@ -107,6 +166,7 @@ public class CoreJavaPrograms {
 
         System.out.println(Arrays.toString(arr));
     }
+
     // Helper function to reverse array from index 'start' to 'end'
     private static void reverse(int[] arr, int start, int end) {
         while (start < end) {
@@ -117,9 +177,10 @@ public class CoreJavaPrograms {
             end--;
         }
     }
+
     private static void rotateArrayUsingJava8() {
         //Using streams
-        int[] arr = {1,2,3,4,5,6};
+        int[] arr = {1, 2, 3, 4, 5, 6};
         int rotate = 2;
 
         List<Integer> collect = IntStream.range(0, arr.length)
@@ -139,25 +200,25 @@ public class CoreJavaPrograms {
 
     private static void rotateArrays() {
         /*Without following time complexity*/
-        int[] arr = {1,2,3,4,5,6};
+        int[] arr = {1, 2, 3, 4, 5, 6};
         int rotateNum = 2;
         int length = arr.length;
-        int rotateSize = length-rotateNum;
+        int rotateSize = length - rotateNum;
         int[] newArr = new int[length];
 
         String temp = "";
-        for (int i = rotateSize; i < length; i++){
-            temp = temp+arr[i];
+        for (int i = rotateSize; i < length; i++) {
+            temp = temp + arr[i];
         }
 
         int count = rotateNum;
-        for (int j = 0; j < rotateSize; j++){
-            newArr[count]=arr[j];
+        for (int j = 0; j < rotateSize; j++) {
+            newArr[count] = arr[j];
             count++;
         }
         count = 0;
-        for (String s : temp.split("")){
-            newArr[count]=Integer.parseInt(s);
+        for (String s : temp.split("")) {
+            newArr[count] = Integer.parseInt(s);
             count++;
         }
 
@@ -170,31 +231,31 @@ public class CoreJavaPrograms {
     }
 
     private static void sortArrayOfIntegers() {
-        int[] arr = {4,2,6,3,8,10};
+        int[] arr = {4, 2, 6, 3, 8, 10};
 
-        for (int i = 0; i < arr.length; i++){
-            for (int j = i+1; j < arr.length; j++){
-                if (arr[i] > arr[j]){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
                     int integer = arr[i];
                     arr[i] = arr[j];
                     arr[j] = integer;
                 }
             }
         }
-        for (int i : arr){
-        System.out.print(i+",");
+        for (int i : arr) {
+            System.out.print(i + ",");
         }
     }
 
     private static void sortingListOfString() {
         List<String> stringList = Arrays.asList("samba", "shivudu", "ambati");
 
-        for (int i =0; i < stringList.size(); i++){
-            for (int j = i +1; j < stringList.size(); j++){
-                if (stringList.get(i).compareTo(stringList.get(j)) > 0){
+        for (int i = 0; i < stringList.size(); i++) {
+            for (int j = i + 1; j < stringList.size(); j++) {
+                if (stringList.get(i).compareTo(stringList.get(j)) > 0) {
                     String temp = stringList.get(i);
-                    stringList.set(i,stringList.get(j));
-                    stringList.set(j,temp);
+                    stringList.set(i, stringList.get(j));
+                    stringList.set(j, temp);
                 }
             }
         }
@@ -207,17 +268,17 @@ public class CoreJavaPrograms {
         int sum = 0;
         int temp = number;
 
-        while (number > 0){
-            rem = number%10;
-           number = number/10;
-           sum = sum+rem*rem*rem;
+        while (number > 0) {
+            rem = number % 10;
+            number = number / 10;
+            sum = sum + rem * rem * rem;
         }
 
-        if (temp == sum){
+        if (temp == sum) {
             System.out.println("ArmStrongNumber");
-        }else {
-      System.out.println("Not a ArmStrongNumber");
-                }
+        } else {
+            System.out.println("Not a ArmStrongNumber");
+        }
     }
 
     private static void palindromeNumber() {
@@ -226,14 +287,14 @@ public class CoreJavaPrograms {
         int sum = 0;
         int temp = number;
 
-        while (number > 0){
-            rem = number%10;
-            number = number/10;
-            sum = sum*10+rem;
+        while (number > 0) {
+            rem = number % 10;
+            number = number / 10;
+            sum = sum * 10 + rem;
         }
-        if (temp == sum){
+        if (temp == sum) {
             System.out.println("Palindrome number");
-        }else {
+        } else {
             System.out.println("Not a Palindrome number");
         }
     }
@@ -241,62 +302,60 @@ public class CoreJavaPrograms {
     private static void feboNocciSeries() {
         /*print 10 febonocciseries numbers*/
 
-        int n1 = 0,n2 = 1, n3 = 0;
+        int n1 = 0, n2 = 1, n3 = 0;
 
-        System.out.print(n1+",");
-        System.out.print(n2+",");
+        System.out.print(n1 + ",");
+        System.out.print(n2 + ",");
 
-        for (int i = 2; i < 10; i++){
-          n3 = n1 + n2;
-      System.out.print(n3+",");
-          n1 = n2;
-          n2 = n3;
+        for (int i = 2; i < 10; i++) {
+            n3 = n1 + n2;
+            System.out.print(n3 + ",");
+            n1 = n2;
+            n2 = n3;
         }
     }
 
     private static void maxAndSecondLargestMaxInArray() {
-        int[] arr = {5,3,8,9,20,10};
+        int[] arr = {5, 3, 8, 9, 20, 10};
         int max = arr[0];
         int secondLargestMax = arr[0];
 
-        for (int i = 0;  i < arr.length; i++){
-            if (arr[i] > max){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
                 secondLargestMax = max;
                 max = arr[i];
-            }
-            else if(secondLargestMax < arr[i]){
+            } else if (secondLargestMax < arr[i]) {
                 secondLargestMax = arr[i];
             }
         }
-        System.out.println("Max : "+max+" SecondLargestMax : "+secondLargestMax);
+        System.out.println("Max : " + max + " SecondLargestMax : " + secondLargestMax);
     }
 
     private static void minAndSecondLargestMinInArray() {
-        int[] arr = {5,3,8,9,10};
+        int[] arr = {5, 3, 8, 9, 10};
         int min = arr[0];
         int secondLargestMin = arr[0];
-        for (int i = 0; i < arr.length; i++){
-            if (arr[i] < min){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min) {
                 secondLargestMin = min;
                 min = arr[i];
-            }
-            else if(secondLargestMin > arr[i]){
+            } else if (secondLargestMin > arr[i]) {
                 secondLargestMin = arr[i];
             }
         }
-    System.out.println("Min : "+min+" SecondLargestMin : "+secondLargestMin);
+        System.out.println("Min : " + min + " SecondLargestMin : " + secondLargestMin);
     }
 
     private static void primeNumbers() {
-        for (int i = 1; i < 50; i++){
+        for (int i = 1; i < 50; i++) {
             int count = 0;
-            for (int j = 1; j <=i; j++){
-                if (i%j == 0){
+            for (int j = 1; j <= i; j++) {
+                if (i % j == 0) {
                     count++;
                 }
             }
-            if (count == 2){
-                System.out.print(i+",");
+            if (count == 2) {
+                System.out.print(i + ",");
             }
         }
     }
@@ -304,28 +363,28 @@ public class CoreJavaPrograms {
     private static void returnMajorityOfElementExistInArray() {
         //The majority of the element is appears more than ⌊n / 2⌋ times. You may assume that the majority of the element always exists in the array.
         Map<Integer, Integer> map = new HashMap<>();
-        int[] nums = {2,2,1,1,1,2,2};
+        int[] nums = {2, 2, 1, 1, 1, 2, 2};
         int l = nums.length;
 
-        for (int i = 0; i < nums.length; i++){
-            if (map.containsKey(nums[i])){
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
                 Integer c = map.get(nums[i]);
                 map.put(nums[i], ++c);
-            }else {
+            } else {
                 map.put(nums[i], 1);
             }
         }
         System.out.println(map);
         map.forEach((k, v) -> {
-         if (v > l/2){
-             System.out.println(k);
-         }
+            if (v > l / 2) {
+                System.out.println(k);
+            }
         });
     }
 
     private static void java8ConceptsPro() {
         /*get the CreditCard data by sorting based on Name and id range should be >1 and <5 */
-        List<CreditCard> collect = CreditCard.getCreditCard().stream().sorted((o1,o2) -> o2.getId() - o1.getId()).filter(creditCard -> creditCard.getId() >1 && creditCard.getId() < 3).collect(Collectors.toList());
+        List<CreditCard> collect = CreditCard.getCreditCard().stream().sorted((o1, o2) -> o2.getId() - o1.getId()).filter(creditCard -> creditCard.getId() > 1 && creditCard.getId() < 3).collect(Collectors.toList());
 
         /*group by creditCardNumber*/
 //        Map<String, List<CreditCard>> collect1 = CreditCard.getCreditCard().stream().collect(Collectors.groupingBy(CreditCard::getCreditCardNumber));
@@ -333,7 +392,7 @@ public class CoreJavaPrograms {
         /*special feature called summary statistics will provide avg, min, max, count*/
 //        IntSummaryStatistics intSummaryStatistics = CreditCard.getCreditCard().stream().mapToInt(creditCard -> Integer.parseInt(creditCard.getCreditCardNumber())).summaryStatistics();
 
-        List<CreditCard> collect2 = CreditCard.getCreditCard().stream().sorted((c1,c2) -> c2.getId()-c1.getId()).collect(Collectors.toList());
+        List<CreditCard> collect2 = CreditCard.getCreditCard().stream().sorted((c1, c2) -> c2.getId() - c1.getId()).collect(Collectors.toList());
 
         /*partitioning creditCard by id ex : id < 3 then
         if matched within the range then key should true and value should that current Obj */
@@ -343,32 +402,32 @@ public class CoreJavaPrograms {
     }
 
     private static void medianOfTwoSortedArrays() {
-        int[] n1 = {1,2,3};
-        int[] n2 = {4,5,6,7};
+        int[] n1 = {1, 2, 3};
+        int[] n2 = {4, 5, 6, 7};
 
-        int size = n1.length+n2.length;
+        int size = n1.length + n2.length;
         int[] mergedArray = new int[size];
 
         int count = 0;
-        for (int i : n1){
+        for (int i : n1) {
             mergedArray[count] = i;
             count++;
         }
 
-        for (int j : n2){
+        for (int j : n2) {
             mergedArray[count] = j;
             count++;
         }
 
-        int mid = size/2;
-        if (size%2 !=0){
+        int mid = size / 2;
+        if (size % 2 != 0) {
             //oddMid
             System.out.println(mergedArray[mid]);
-        }else {
-            int mid1 = mergedArray[mid-1];
+        } else {
+            int mid1 = mergedArray[mid - 1];
             int mid2 = mergedArray[mid];
-            int oddMid = mid1+mid2;
-            double evenMid = (double) oddMid/2;
+            int oddMid = mid1 + mid2;
+            double evenMid = (double) oddMid / 2;
             System.out.println(evenMid);
         }
     }
@@ -376,13 +435,13 @@ public class CoreJavaPrograms {
     private static void removeDuplicateIntFromListAndFindMax() {
         List<Integer> list = Arrays.asList(20, 30, 40, 20, 60, 70, 80, 40);
         List<Integer> collect = list.stream().distinct().collect(Collectors.toList());
-        Optional<Integer> max = collect.stream().filter(integer -> integer > 0).max((o1,o2) -> o1-o2);
-    System.out.println(max.get());
+        Optional<Integer> max = collect.stream().filter(integer -> integer > 0).max((o1, o2) -> o1 - o2);
+        System.out.println(max.get());
         Optional<Integer> min = collect.stream().filter(integer -> integer > 0).min((o1, o2) -> o1 - o2);
-      System.out.println(min.get());
+        System.out.println(min.get());
 
         List<Integer> collect1 = list.stream().sorted((o1, o2) -> o2 - o1).collect(Collectors.toList());
-    System.out.println(collect1);
+        System.out.println(collect1);
     }
 
     private static void removeDuplicatesFromList() {
@@ -390,10 +449,10 @@ public class CoreJavaPrograms {
         /*remove duplicates from a string*/
         char[] cha = s0.toCharArray();
         List<Character> lists = new ArrayList<>();
-        for (int i = 0; i < cha.length; i++){
-            if (lists.contains(cha[i])){
+        for (int i = 0; i < cha.length; i++) {
+            if (lists.contains(cha[i])) {
                 continue;
-            }else {
+            } else {
                 lists.add(cha[i]);
             }
         }
@@ -407,23 +466,23 @@ public class CoreJavaPrograms {
 
     private static void addTwoNumbersUptoTarget() {
 
-        int[] arr = {2,7,11,6};
+        int[] arr = {2, 7, 11, 6};
 
-        int t= 9;
+        int t = 9;
         Map<Integer, Integer> map = new HashMap<>();
 
         int[] twoSum = null;
-        for (int i =0; i < arr.length; i++){
-           int c = t-arr[i];
+        for (int i = 0; i < arr.length; i++) {
+            int c = t - arr[i];
 
-           if (map.containsKey(c)) {
-               twoSum =  new int[] {map.get(c), i};
-           }else {
-               map.put(arr[i], i);
-           }
+            if (map.containsKey(c)) {
+                twoSum = new int[]{map.get(c), i};
+            } else {
+                map.put(arr[i], i);
+            }
         }
 
-        for (int i : twoSum){
+        for (int i : twoSum) {
             System.out.print(i);
         }
     }
@@ -443,21 +502,21 @@ public class CoreJavaPrograms {
         String max = Collections.max(dbList);
         System.out.println(dbList);
 
-        if (dbList.contains(cRMId)){
+        if (dbList.contains(cRMId)) {
             System.out.println("CRM_ID found");
-            String newCRmId = cRMId+"-"+ "1";
-            if (dbList.size() == 1){
+            String newCRmId = cRMId + "-" + "1";
+            if (dbList.size() == 1) {
                 dbList.add(newCRmId);
-            }else {
+            } else {
                 String dbCRMId = max;
                 String[] split = dbCRMId.split("-");
 //                String count = split[split.length - 1];
                 int intCount = Integer.parseInt(split[split.length - 1]);
                 int incrementedCount = ++intCount;
-                cRMId = cRMId+"-"+incrementedCount;
+                cRMId = cRMId + "-" + incrementedCount;
                 dbList.add(cRMId);
             }
-        }else {
+        } else {
             dbList.add(cRMId);
             System.out.println("CRM_ID not found and save new record");
         }
@@ -489,12 +548,12 @@ Explanation: The middle node of the list is node 3.*/
         List<Integer> newList = new LinkedList<>();
         int lengthOfList = evenList.size();
         int mid = lengthOfList / 2;
-        if (lengthOfList%2 != 0) {
-        for (int i = mid; i < lengthOfList; i++){
-            newList.add(evenList.get(i));
-        }
-        }else {
-            for (int i = mid; i < lengthOfList; i++){
+        if (lengthOfList % 2 != 0) {
+            for (int i = mid; i < lengthOfList; i++) {
+                newList.add(evenList.get(i));
+            }
+        } else {
+            for (int i = mid; i < lengthOfList; i++) {
                 newList.add(evenList.get(i));
             }
         }
@@ -518,24 +577,23 @@ Explanation: The middle node of the list is node 3.*/
 
     private static int binarySearch() {
 
-        int[] intArray = {2,3,5,8,9};
+        int[] intArray = {2, 3, 5, 8, 9};
         int searchNumber = 9;
 
         //lestIndex position
         int left = 0;
         //rightIndex position
-        int right = intArray.length-1;
+        int right = intArray.length - 1;
 
-        while (left <= right){
-            int mid = (left + right)/2;
+        while (left <= right) {
+            int mid = (left + right) / 2;
 
-            if (intArray[mid] == searchNumber){
+            if (intArray[mid] == searchNumber) {
                 return mid;
-            }
-            else if (intArray[mid] < searchNumber){
-                left = mid+1;
-            }else {
-                right = mid-1;
+            } else if (intArray[mid] < searchNumber) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
 
@@ -543,10 +601,10 @@ Explanation: The middle node of the list is node 3.*/
     }
 
     private static int linearSearch() {
-        int[] linearArray = {2,3,5,8,9};
+        int[] linearArray = {2, 3, 5, 8, 9};
         int searchNumber = 9;
-        for (int i = 0; i < linearArray.length; i++){
-            if (linearArray[i] == searchNumber){
+        for (int i = 0; i < linearArray.length; i++) {
+            if (linearArray[i] == searchNumber) {
                 return i;
             }
         }
@@ -556,30 +614,30 @@ Explanation: The middle node of the list is node 3.*/
 
     private static double findMedianInMergedArray() {
 
-        int[] n1 = {2,1};
-        int[] n2 = {3,4};
+        int[] n1 = {2, 1};
+        int[] n2 = {3, 4};
 
         int tL = n1.length + n2.length;
         int[] merged = new int[tL];
         int count = 0;
-        for (int i : n1){
+        for (int i : n1) {
             merged[count] = i;
             count++;
         }
-        for (int j : n2){
-                merged[count] = j;
-                count++;
+        for (int j : n2) {
+            merged[count] = j;
+            count++;
         }
         System.out.println(Arrays.toString(merged));
         Arrays.sort(merged);
 
         System.out.println(Arrays.toString(merged));
 
-        int mid = tL/2;
-        if (tL%2 != 0){
+        int mid = tL / 2;
+        if (tL % 2 != 0) {
             return merged[mid];
         }
-       double d= (double)(merged[mid] + merged[mid-1])/2;
+        double d = (double) (merged[mid] + merged[mid - 1]) / 2;
         return d;
     }
 

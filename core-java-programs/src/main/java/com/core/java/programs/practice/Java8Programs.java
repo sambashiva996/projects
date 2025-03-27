@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Java8Programs {
 
@@ -178,6 +179,7 @@ public class Java8Programs {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 //        System.out.println(collect3);
 ////////////////////////////////////////////////////////////////////////////////////////
+
         /*rotate array of integers by given number like 2 and 2 numbers should be rotate */
         int[] arr = {1,2,3,4,5,6};
         int rotate = 2;
@@ -185,6 +187,40 @@ public class Java8Programs {
         List<Integer> collect5 = IntStream.range(0, arr.length)
                 .mapToObj(m -> arr[(m - rotate + arr.length) % arr.length]) // Circular shift
                 .collect(Collectors.toList());
-        System.out.println(collect5);
+//        System.out.println(collect5);
+/////////////////////////////////////////////////////////////////////////////////////////
+
+  /*
+        * Print the combination if keypad letters based on given input combination
+        * input :
+          2 abc
+          3 def
+          4 ghi
+          5 jkl
+          6 mno
+          7 pqrs
+          8 tuv
+          9 wxyz
+         * output : 23 = ad, ae, af, bd, be, bf, cd, ce, cf
+         * */
+        Map<Integer, String> map = new HashMap<>();
+        map.put(2, "abc"); map.put(3, "def");map.put(4, "ghi");
+        map.put(5, "jkl");map.put(6, "mno");map.put(7, "pqrs");
+        map.put(8, "tuv");map.put(9, "wxyz");
+
+        String input = "23";
+
+        List<String> collect4 = Arrays.stream(input.split(""))
+                .map(m -> map.get(Integer.parseInt(m)))
+                .filter(Objects::nonNull)
+                .map(m -> Arrays.asList(m.split("")))
+                .reduce((r1, r2) ->
+                        r1.stream().flatMap(f ->
+                                r2.stream().map(f1 -> f + f1)).collect(Collectors.toList()))
+                .orElse(Collections.emptyList());
+
+        System.out.println(collect4);
+
+
     }
 }

@@ -1,7 +1,27 @@
 package com.core.java.programs.practice;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class Demo {
     public static void main(String[] args) {
+
+
+        List<Integer> l1= Arrays.asList(1,3,5,8,9,4,2,null);
+        List<Integer> l2= Arrays.asList(1,4,7,9,23,24);
+        List<List<Integer>> flatList = new ArrayList<>();
+        flatList.add(l1);
+        flatList.add(l2);
+
+        List<Integer> r = l1.stream().filter(f -> l2.contains(f)) .collect(Collectors.toList());
+//        System.out.println(r);
+
+        Map<Boolean, List<Integer>> collect = l1.stream().filter(f -> l2.contains(f)).collect(Collectors.partitioningBy(p -> p % 2 == 0));
+
+//        System.out.println("even Number :"+collect.get(true) +" and odd number " + collect.get(false));
+
+        List<Integer> collect1 = flatList.stream().flatMap(List::stream).filter(f -> Objects.nonNull(f)).collect(Collectors.toList());
+//        System.out.println(collect1);
 
 //        andAndOperatorUsecases();
 
