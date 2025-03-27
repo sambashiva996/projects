@@ -216,7 +216,8 @@ public class Java8Programs {
                 .map(m -> Arrays.asList(m.split("")))
                 .reduce((r1, r2) ->
                         r1.stream().flatMap(f ->
-                                r2.stream().map(f1 -> f + f1)).collect(Collectors.toList()))
+                                r2.stream().map(f1 -> f + f1))
+                                .collect(Collectors.toList()))
                 .orElse(Collections.emptyList());
 
         System.out.println(collect4);
