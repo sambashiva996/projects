@@ -19,7 +19,10 @@ public class CoreJavaPrograms {
 
         List<CreditCard> creditCardList = CreditCard.getCreditCard();
 /// ////////////////////////////////////////////////////////////////
+
         keyPadMobile();
+///////////////////////////////////////////////////////////////////
+
 //        convertStringArrayToCharacterArray();
 ////////////////////////////////////////////////////////////////////
 
@@ -132,16 +135,18 @@ public class CoreJavaPrograms {
         String s1 = "";
         String s2 = "";
         List<String> list1 = new ArrayList<>();
-        for (Map.Entry<Integer, String> entry : entries) {
+//        for (Map.Entry<Integer, String> entry : entries) {
+//
+//            if (entry.getKey().equals(num)) {
+//                s1 = s1 + entry.getValue();
+//            }
+//            if (entry.getKey().equals(num1)) {
+//                s2 = s2 + entry.getValue();
+//            }
+//        }
 
-            if (entry.getKey().equals(num)) {
-                s1 = s1 + entry.getValue();
-            }
-            if (entry.getKey().equals(num1)) {
-                s2 = s2 + entry.getValue();
-            }
-        }
-
+        s1 = map.get(num);
+        s2 = map.get(num1);
         for (int i = 0; i < s1.length(); i++) {
 
             for (int j = 0; j < s2.length(); j++) {

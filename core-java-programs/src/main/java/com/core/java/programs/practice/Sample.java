@@ -18,7 +18,7 @@ public class Sample {
         List<Student> studentList = Student.getStudentList();
 /////////////////////////////////////////////////////////////////////////
 
-//        keyPadMobile();
+        keyPadMobile();
 /// ///////////////////////////////////////////////////////////////////
         int fact = 5;
 //        System.out.println(factorial(fact));
@@ -108,7 +108,19 @@ public class Sample {
         }
 
         String join = String.join(", ", list1);
-        System.out.println(join);
+
+        //OR
+
+        List<String> strings = Arrays.stream(input.split(""))
+                .map(m -> map.get(Integer.parseInt(m)))
+                .filter(Objects::nonNull)
+                .map(m -> Arrays.asList(m.split("")))
+                .reduce((r1, r2) -> r1.stream().flatMap(f -> r2.stream().map(f1 -> f + f1))
+                        .collect(Collectors.toList()))
+                .orElse(Collections.emptyList());
+
+
+        System.out.println(strings);
     }
 
     private static int factorial(int fact) {
