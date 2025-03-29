@@ -18,9 +18,11 @@ public class CoreJavaPrograms {
     public static void main(String[] args) {
 
         List<CreditCard> creditCardList = CreditCard.getCreditCard();
+
+//        countEachCharAndPrintCharWithCount();
 /// ////////////////////////////////////////////////////////////////
 
-        keyPadMobile();
+//        keyPadMobile();
 ///////////////////////////////////////////////////////////////////
 
 //        convertStringArrayToCharacterArray();
@@ -95,6 +97,40 @@ public class CoreJavaPrograms {
 ////////////////////////////////////////////////////////////
 
 //        countFrequencyOfElementsInString();
+    }
+
+    private static void countEachCharAndPrintCharWithCount() {
+        String str ="aabbbcccc";
+
+        //out put : a2b3c4
+
+        Map<Character, Integer> map = new LinkedHashMap<>();
+
+        for (int i = 0; i < str.length(); i++){
+
+            char r = str.charAt(i);
+            if (map.containsKey(r)) {
+                int c = map.get(r);
+                map.put(r, ++c);
+            }else {
+                map.put(r, 1);
+            }
+
+            //OR
+//            map.put(r, map.getOrDefault(r, 0) + 1);
+
+        }
+
+//        System.out.println(map);
+
+        StringBuilder sb = new StringBuilder();
+
+        for (Map.Entry<Character, Integer> entry : map.entrySet()){
+
+            sb.append(entry.getKey()).append(entry.getValue());
+
+        }
+        System.out.println(sb.toString());
     }
 
     private static void keyPadMobile() {

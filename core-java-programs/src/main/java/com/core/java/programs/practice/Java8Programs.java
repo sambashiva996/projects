@@ -1,10 +1,11 @@
 package com.core.java.programs.practice;
 
+import com.core.java.programs.model.Student;
+
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Java8Programs {
 
@@ -220,8 +221,35 @@ public class Java8Programs {
                                 .collect(Collectors.toList()))
                 .orElse(Collections.emptyList());
 
-        System.out.println(collect4);
+//        System.out.println(collect4);
+/// ///////////////////////////////////////////////////////////////////////////////////
 
+        /*find average of even numbers from given array*/
+        Integer i[]={1,2,3,4,5,6,7,8};
 
+        double asDouble = Arrays.stream(i).mapToInt(m -> m).filter(f -> f % 2 == 0).average().getAsDouble();
+//        System.out.println(asDouble);
+////////////////////////////////////////////////////////////////////////////////////////
+
+        /*Print char and its count in such way order from given array*/
+        String str ="aabbbcccc";
+
+        //out put : a2b3c4
+
+        String stringWithCount = Arrays.stream(str.split(""))
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                .entrySet().stream()
+                .map(m -> m.getKey() + m.getValue())
+                .collect(Collectors.joining());
+//        System.out.println(stringWithCount);
+///////////////////////////////////////////////////////////////////////////////////////////
+
+        /* Find 5th highest grade of student
+         */
+
+        Student collect6 = Student.getStudentList().stream()
+                .sorted(Comparator.comparingDouble(Student::getGrade).reversed())
+                .skip(4).findFirst().get();
+//        System.out.println(collect6);
     }
 }
