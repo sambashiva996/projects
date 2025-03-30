@@ -18,6 +18,7 @@ public class QuestionsAndAnswers {
     * 12. What special symbols allowed for identifiers in java ?
     * 13. Java SOLID Principles
     * 14. How Concurrent HashMap differentiate with HashMap in java ?
+    * 15. Interface allow static and default methods but still abstract class is there and why ?
     *
     * */
 
@@ -26,14 +27,14 @@ public class QuestionsAndAnswers {
    * 1. How to handle 1000 multiple request in spring boot code level
    * 2. We have 100 of microservices one of it got down. The root cause is it will take 24H to resolve it.
    *    but we need to provide immediate resolution ? how can achieve it ?
-   * 3. How Maven application become a spring application not spring boot app, and it expects one lib to become spring app ?
+   * 3. How Maven application become a spring application not spring boot app, and it expects one lib to become spring app (i.e : spring-context)?
    *    what is it ?
-   * 4. How white label error display when we give wrong url ? what is that default code in spring boot ?
+   * 4. How white label error display when we give wrong url ? what is that default code in spring boot (i.e : BasicErrorController)?
    * 5. How Transactional annotation works and what are the params in it in spring boot?
    * 6  What is the response if two api methods have same URI and params except method name in spring boot ?
    * 7. Spring security with JWT
    * 8. How Caching works in spring boot and implementation?
-   * 8. How to create triple ton class in spring boot ?
+   * 9. How to create triple ton class in spring boot ?
    *
    * */
 
