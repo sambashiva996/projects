@@ -35,6 +35,7 @@ public class QuestionsAndAnswers {
    * 7. Spring security with JWT
    * 8. How does Caching work in spring boot and implementation?
    * 9. How to create triple ton class in spring boot?
+   * 10.How to lock table in a database and manage in spring boot ?
    *
    * */
 
