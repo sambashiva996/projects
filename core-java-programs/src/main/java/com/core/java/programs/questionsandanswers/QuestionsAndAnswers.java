@@ -45,6 +45,7 @@ public class QuestionsAndAnswers {
     * 3. Write a query for UNION and UNION ALL
     * 4. What are ACID properties and how transaction integrity works
     * 5. What are the new DDL features?
+    * 6.What is config server?
     *
      * */
 
@@ -56,6 +57,7 @@ public class QuestionsAndAnswers {
     * 4. What are the ways to communicate btw each spring boot microservice?
     * 5. What are design patterns and explain each?
     * 6. To implement microservices, what are the things to do follow?
+    *
     *
     * */
 }
