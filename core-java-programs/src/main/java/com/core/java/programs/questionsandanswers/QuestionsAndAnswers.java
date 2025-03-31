@@ -37,6 +37,7 @@ public class QuestionsAndAnswers {
    * 9. How to create triple ton class in spring boot?
    * 10.How to lock table in a database and manage in spring boot?
    * 11.How to use two diff database schemas in spring boot?
+   * 12.How to config two diff databases in spring boot?
    *
    * */
 
