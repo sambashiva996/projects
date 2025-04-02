@@ -13,6 +13,7 @@ public class StaticProgram {
     public static void main(String[] args) {
         int a = 20;
         int b = 15;
+        int c = 0;
         new StaticProgram().c -= a++ + +b + ++new StaticProgram().c - new StaticProgram().d++;
         System.out.println("c-- " + new StaticProgram().c);
     }

@@ -16,10 +16,9 @@ public class Sample {
         objectList.add(creditCardList);
 
         List<Student> studentList = Student.getStudentList();
-
 /////////////////////////////////////////////////////////////////////////
 
-        keyPadMobile();
+//        keyPadMobile();
 /// ///////////////////////////////////////////////////////////////////
         int fact = 5;
 //        System.out.println(factorial(fact));

@@ -2,10 +2,7 @@ package com.core.java.programs.practice;
 
 import com.core.java.programs.model.Student;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StudentJava8Programs {
@@ -67,5 +64,27 @@ public class StudentJava8Programs {
         /*Find the student with Longest full name*/
         Optional<String> max1 = studentList.stream().map(stu -> stu.getFirsName() + " " + stu.getLastName()).max(Comparator.comparing(String::length));
 //        System.out.println(max1.get());
+
+        /*Using Collectors class*/
+
+        /*print strings output : [samba,test,test1,test2,test2,test3]
+         */
+        String collect9 = studentList.stream().collect(Collectors.mapping(Student::getFirsName, Collectors.joining(",", "[", "]")));
+        System.out.println(collect9);
+
+        /*filter the ages of students more than 25 age*/
+        List<Student> collect10 = studentList.stream().collect(Collectors.filtering(student -> student.getAge() > 25, Collectors.toList()));
+        System.out.println(collect10);
+
+        /**/
+        Double collect11 = studentList.stream().collect(Collectors.averagingDouble(Student::getGrade));
+        System.out.println(collect11);
+        /**/
+        List<Student> list1 = studentList.stream().collect(Collectors.collectingAndThen(Collectors.toList(), students -> students.stream().sorted())).toList();
+        System.out.println(list1);
+        /**/
+        List<Student> collect12 = studentList.stream().map(Arrays::asList).collect(Collectors.flatMapping(m -> m.stream(), Collectors.toList()));
+        System.out.println(collect12);
+
     }
 }

@@ -1,13 +1,11 @@
 package com.core.java.programs.practical;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 public class MethodOverrideCalls {
 
     public static void main(String[] args) {
 
         Parent c = new Child();
+        c.m1();
         System.out.println(c.n);
     }
 }

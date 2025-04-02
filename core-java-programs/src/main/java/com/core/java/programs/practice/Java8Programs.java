@@ -228,6 +228,8 @@ public class Java8Programs {
         Integer i[]={1,2,3,4,5,6,7,8};
 
         double asDouble = Arrays.stream(i).mapToInt(m -> m).filter(f -> f % 2 == 0).average().getAsDouble();
+        //OR
+        double asDouble1 = Arrays.stream(i).mapToInt(m -> m).filter(f -> f % 2 == 0).summaryStatistics().getAverage();
 //        System.out.println(asDouble);
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -251,5 +253,7 @@ public class Java8Programs {
                 .sorted(Comparator.comparingDouble(Student::getGrade).reversed())
                 .skip(4).findFirst().get();
 //        System.out.println(collect6);
-    }
+
+}
+
 }

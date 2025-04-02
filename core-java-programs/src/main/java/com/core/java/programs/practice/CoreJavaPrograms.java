@@ -102,7 +102,7 @@ public class CoreJavaPrograms {
     private static void countEachCharAndPrintCharWithCount() {
         String str ="aabbbcccc";
 
-        //out put : a2b3c4
+        //output : a2b3c4
 
         Map<Character, Integer> map = new LinkedHashMap<>();
 
