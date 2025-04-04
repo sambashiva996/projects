@@ -19,6 +19,15 @@ public class CoreJavaPrograms {
 
         List<CreditCard> creditCardList = CreditCard.getCreditCard();
 
+//        filterWordsFromString();
+/// ////////////////////////////////////////////////////////////////
+
+//        checkStringBalancing();
+////////////////////////////////////////////////////////////////////
+
+//        printUniqueElementsWithoutAnyPredefinedMethods();
+////////////////////////////////////////////////////////////////////
+
 //        countEachCharAndPrintCharWithCount();
 /// ////////////////////////////////////////////////////////////////
 
@@ -97,6 +106,72 @@ public class CoreJavaPrograms {
 ////////////////////////////////////////////////////////////
 
 //        countFrequencyOfElementsInString();
+    }
+
+    private static void filterWordsFromString() {
+        /*
+        * Filter words from string into diff categories
+        * output : [rmesh] [jina7, LMn355, fgas4] [134] [%^$^, &&%]
+        * */
+        String words = "rmesh jina7 LMn355 %^$^ 134 fgas4 &&%";
+
+        List<String> wordsList = Arrays.asList(words.split(" "));
+
+        List<String> alphabets = wordsList.stream().filter(word -> word.matches("[a-zA-Z]+")).collect(Collectors.toList());
+        List<String> alphaNumeric = wordsList.stream().filter(word -> word.matches("[a-zA-Z0-9]+") && !word.matches("[0-9]+") && !word.matches("[a-zA-Z]+")).collect(Collectors.toList());
+        List<String> numeric = wordsList.stream().filter(word -> word.matches("[0-9]+")).collect(Collectors.toList());
+        List<String> specialChars = wordsList.stream().filter(word -> !word.matches("[a-zA-Z0-9]+")).collect(Collectors.toList());
+
+        System.out.println(alphabets+" "+alphaNumeric+" "+numeric+" "+specialChars);
+    }
+
+    private static void checkStringBalancing() {
+        /*
+        * Validate given input string
+        * output : true or false
+        * */
+        String input = "([{}])";
+        String input1 = "([{)]}";
+
+        System.out.println(isBalanced(input));
+    }
+
+    public static boolean isBalanced(String str) {
+        Stack<Character> stack = new Stack<>();
+
+        for (char ch : str.toCharArray()) {
+            if (ch == '(' || ch == '[' || ch == '{') {
+                stack.push(ch); // Push opening brackets
+            } else if (ch == ')' && !stack.isEmpty() && stack.peek() == '(') {
+                stack.pop(); // Pop if matching
+            } else if (ch == ']' && !stack.isEmpty() && stack.peek() == '[') {
+                stack.pop();
+            } else if (ch == '}' && !stack.isEmpty() && stack.peek() == '{') {
+                stack.pop();
+            } else {
+                return false; // If no match found, return false
+            }
+        }
+        return stack.isEmpty(); // Should be empty if balanced
+    }
+
+    private static void printUniqueElementsWithoutAnyPredefinedMethods() {
+        int[] arr = {2,3,3,1,4,5, 5};
+
+        for (int i = 0; i < arr.length; i++){
+            boolean isUnique = true;
+
+            for (int j = i +1; j < arr.length; j++){
+
+                if (arr[i] == arr[j]){
+                    isUnique = false;
+                    break;
+                }
+            }
+            if (isUnique){
+                System.out.print(arr[i]+" ");
+            }
+        }
     }
 
     private static void countEachCharAndPrintCharWithCount() {
