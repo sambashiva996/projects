@@ -11,8 +11,13 @@ public class Java8Programs {
 
     public static void main(String[] args) {
 
+        /*Print prime Numbers in java8*/
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
         /*Java 8*/
-        /* print  characters and count of character from given string*/
+        /* print characters and count of character from given string*/
         String s = "Samba shivudu ambati";
 
         Map<String, Long> charAndCountOfChars = Arrays.stream(s.split(""))
@@ -21,6 +26,7 @@ public class Java8Programs {
 
 //        System.out.println(charAndCountOfChars);
 /// //////////////////////////////////////////////////////////////////////////////////////////
+
         /*print all duplicate elements from given string*/
 
         String s2 = "samba shivudu ambati";
@@ -60,6 +66,16 @@ public class Java8Programs {
                 .filter(c -> c.getValue() == 1)
                 .map(Map.Entry::getKey)
                 .findFirst();
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+        /*print first repeat character from given string*/
+
+        Optional<String> optionalString = Arrays.stream(s1.split(""))
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                .entrySet().stream()
+                .filter(f -> f.getValue() > 1)
+                .map(Map.Entry::getKey).findFirst();
+        optionalString.ifPresent(System.out::println);
 
 //        System.out.println(firstNonRepeatChar.get());
 ///////////////////////////////////////////////////////////////////////////////////////////////
