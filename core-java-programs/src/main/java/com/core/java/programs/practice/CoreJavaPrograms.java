@@ -90,7 +90,10 @@ public class CoreJavaPrograms {
 //        System.out.println(findMedianInMergedArray());
 ///////////////////////////////////////////////////////////
 
-//        addTwoNumbersUptoTarget();
+//        printCommonPrefixFromStringArray();
+//////////////////////////////////////////////////////////
+
+//        addTwoNumbersUpToTarget();
 ///////////////////////////////////////////////////////////
 
 //        java8ConceptsPro();
@@ -106,6 +109,29 @@ public class CoreJavaPrograms {
 ////////////////////////////////////////////////////////////
 
 //        countFrequencyOfElementsInString();
+    }
+
+    private static void printCommonPrefixFromStringArray() {
+        String[] strArray = {"flow", "flight", "flower"};
+
+        String prefix = checkPrefix(strArray);
+        System.out.println(prefix);
+    }
+
+    private static String checkPrefix(String[] strArray) {
+        if (strArray == null || strArray.length == 0) return "";
+
+        String prefix = strArray[0]; // Assume the first word is the prefix
+
+        for (int i = 1; i < strArray.length; i++) {
+            while (strArray[i].indexOf(prefix) != 0) {
+                // Trim the prefix until it's a match
+                prefix = prefix.substring(0, prefix.length() - 1);
+
+                if (prefix.isEmpty()) return "";
+            }
+        }
+        return prefix;
     }
 
     private static void filterWordsFromString() {
@@ -580,7 +606,7 @@ public class CoreJavaPrograms {
         System.out.println(collect);
     }
 
-    private static void addTwoNumbersUptoTarget() {
+    private static void addTwoNumbersUpToTarget() {
 
         int[] arr = {2, 7, 11, 6};
 
