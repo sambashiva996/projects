@@ -23,7 +23,7 @@ public class CoreJavaPrograms {
 /// ////////////////////////////////////////////////////////////////
 
 //        checkStringBalancing();
-////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 //        printUniqueElementsWithoutAnyPredefinedMethods();
 ////////////////////////////////////////////////////////////////////
@@ -57,7 +57,7 @@ public class CoreJavaPrograms {
 //        palindromeNumber();
 //////////////////////////////////////////////////////////
 
-//        feboNocciSeries();
+//        feBoNoCciSeries();
 //////////////////////////////////////////////////////////
 
 //        maxAndSecondLargestMaxInArray();
@@ -149,6 +149,10 @@ public class CoreJavaPrograms {
         List<String> specialChars = wordsList.stream().filter(word -> !word.matches("[a-zA-Z0-9]+")).collect(Collectors.toList());
 
         System.out.println(alphabets+" "+alphaNumeric+" "+numeric+" "+specialChars);
+
+        /*
+        * OutPut : [rmesh] [jina7, LMn355, fgas4] [134] [%^$^, &&%]
+        * */
     }
 
     private static void checkStringBalancing() {
@@ -307,6 +311,9 @@ public class CoreJavaPrograms {
         reverse(arr, rotate, n - 1);//     Reverse remaining elements
 
         System.out.println(Arrays.toString(arr));
+        /*
+        * OutPut : [5, 6, 1, 2, 3, 4]
+        * */
     }
 
     // Helper function to reverse array from index 'start' to 'end'
@@ -329,6 +336,10 @@ public class CoreJavaPrograms {
                 .mapToObj(m -> arr[(m - rotate + arr.length) % arr.length]) // Circular shift
                 .collect(Collectors.toList());
         System.out.println(collect);
+
+        /*
+        * OutPut : [5, 6, 1, 2, 3, 4]
+        * */
     }
 
     private static void convertStringArrayToCharacterArray() {
@@ -337,6 +348,9 @@ public class CoreJavaPrograms {
         char[] charArray = list.stream().collect(Collectors.joining()).toCharArray();
 
         System.out.println(Arrays.toString(charArray));
+        /*
+        * OutPut : [g, o, o, d, m, o, r, n, i, n, g]
+        * */
     }
 
 
@@ -441,7 +455,7 @@ public class CoreJavaPrograms {
         }
     }
 
-    private static void feboNocciSeries() {
+    private static void feBoNoCciSeries() {
         /*print 10 febonocciseries numbers*/
 
         int n1 = 0, n2 = 1, n3 = 0;
@@ -451,10 +465,13 @@ public class CoreJavaPrograms {
 
         for (int i = 2; i < 10; i++) {
             n3 = n1 + n2;
-            System.out.print(n3 + ",");
+            System.out.print(n3 + " ,");
             n1 = n2;
             n2 = n3;
         }
+        /*
+        * OutPut : 0,1,1 ,2 ,3 ,5 ,8 ,13 ,21 ,34 ,
+        * */
     }
 
     private static void maxAndSecondLargestMaxInArray() {
@@ -627,6 +644,9 @@ public class CoreJavaPrograms {
         for (int i : twoSum) {
             System.out.print(i);
         }
+        /*
+        * OutPut : 0,1
+        * */
     }
 
     private static void incrementSequenceId() {

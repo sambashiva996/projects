@@ -16,7 +16,10 @@ class ClassLoadExample{
         System.out.println("Parameterized constructor : "+a);
     }
     {
-        System.out.println("Instance block");
+        System.out.println("Instance block ");
+    }
+    {
+        System.out.println("Instance block one");
     }
     static {
         System.out.println("static block two");
@@ -24,4 +27,15 @@ class ClassLoadExample{
     static {
         System.out.println("static block one");
     }
+
+    /*
+    * Out Put : static block two
+                static block one
+                Instance block
+                Instance block one
+                default constructor
+                Instance block
+                Instance block one
+                Parameterized constructor : 2
+    * */
 }

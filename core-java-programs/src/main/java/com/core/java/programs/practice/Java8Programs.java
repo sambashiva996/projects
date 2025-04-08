@@ -269,6 +269,22 @@ public class Java8Programs {
                 .sorted(Comparator.comparingDouble(Student::getGrade).reversed())
                 .skip(4).findFirst().get();
 //        System.out.println(collect6);
+///////////////////////////////////////////////////////////////////////////////////////////
+
+        /*
+         * Filter words from string into diff categories
+         * output : [rmesh] [jina7, LMn355, fgas4] [134] [%^$^, &&%]
+         * */
+        String words = "rmesh jina7 LMn355 %^$^ 134 fgas4 &&%";
+
+        List<String> wordsList = Arrays.asList(words.split(" "));
+
+        List<String> alphabets = wordsList.stream().filter(word -> word.matches("[a-zA-Z]+")).collect(Collectors.toList());
+        List<String> alphaNumeric = wordsList.stream().filter(word -> word.matches("[a-zA-Z0-9]+") && !word.matches("[0-9]+") && !word.matches("[a-zA-Z]+")).collect(Collectors.toList());
+        List<String> numeric = wordsList.stream().filter(word -> word.matches("[0-9]+")).collect(Collectors.toList());
+        List<String> specialChars = wordsList.stream().filter(word -> !word.matches("[a-zA-Z0-9]+")).collect(Collectors.toList());
+
+//        System.out.println(alphabets+" "+alphaNumeric+" "+numeric+" "+specialChars);
 
 }
 
