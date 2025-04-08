@@ -29,7 +29,7 @@ class ClassLoadExample{
     }
 
     /*
-    * Out Put : static block two
+    * OutPut: static block two
                 static block one
                 Instance block
                 Instance block one

@@ -285,7 +285,18 @@ public class Java8Programs {
         List<String> specialChars = wordsList.stream().filter(word -> !word.matches("[a-zA-Z0-9]+")).collect(Collectors.toList());
 
 //        System.out.println(alphabets+" "+alphaNumeric+" "+numeric+" "+specialChars);
+////////////////////////////////////////////////////////////////////////////////////////////
 
-}
+        /*
+        * Input : 1w,2w,3w,4c,5c
+        * OutPut : {c=[4c, 5c], w=[1w, 2w, 3w]}
+        * */
+
+        List<String> stringList = Arrays.asList("1w", "2w", "3w", "4c", "5c");
+        Map<String, List<String>> stringListMap = stringList.stream().collect(Collectors.groupingBy(s10 -> s10.endsWith("w") ? "w" : "c"));
+//        System.out.println(stringListMap);
+
+
+    }
 
 }
