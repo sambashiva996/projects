@@ -19,6 +19,10 @@ public class QuestionsAndAnswers {
     * 13. Java SOLID Principles
     * 14. How Concurrent HashMap differentiate with HashMap in java?
     * 15. Interface allows static and default methods, but still abstract class is there, and why?
+    * 16. Why does abstract class still there since already have interfaces and what's the diff btw?
+    * 17. What is functional interface?
+    * 18. What is diff btw functional and normal interfaces?
+    * 19. What are aggregation and composition?
     *
     * */
 
@@ -29,7 +33,7 @@ public class QuestionsAndAnswers {
    *    But we need to provide immediate resolution ? how can we achieve it?
    * 3. How does Maven application become a spring application not spring boot app, and it expects one lib to become spring app (i.e : spring-context)?
    *    What is it?
-   * 4. How white label error display when we give the wrong url ? what is that default code in spring boot (i.e.: BasicErrorController)?
+   * 4. How white label error display when we give the wrong url ? what is that default handler code in spring boot (i.e.: BasicErrorController)?
    * 5. How does Transactional annotation work and what are the params in it in spring boot?
    * 6. What is the response if two api methods have the same URI and params except method name in spring boot?
    * 7. Spring security with JWT
@@ -38,7 +42,10 @@ public class QuestionsAndAnswers {
    * 10.How to lock table in a database and manage in spring boot?
    * 11.How to use two diff database schemas in spring boot?
    * 12.How to config two diff databases in spring boot?
-   *
+   * 13.How to load bean based on a property file or by giving class name? (i.e.: @ConditionalOnProperty annotation)
+   * 14.How many ways spring boot applications communicate?
+   * 15.How health check done for databases in spring boot?
+   * 16.What are the spring cloud dependencies?
    * */
 
     /*

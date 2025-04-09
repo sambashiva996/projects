@@ -178,6 +178,12 @@ public class Java8Programs {
 
         //OR
 
+        List<String> collect11 = list.stream().map(m -> Arrays.asList(m.split("")))
+                .flatMap(List::stream).collect(Collectors.toList());
+//        System.out.println(collect11);
+
+        //OR
+
         List<Character> collect2 = list.stream()
                 .flatMapToInt(String::chars)
                 .mapToObj(m -> (char) m)
@@ -295,8 +301,29 @@ public class Java8Programs {
         List<String> stringList = Arrays.asList("1w", "2w", "3w", "4c", "5c");
         Map<String, List<String>> stringListMap = stringList.stream().collect(Collectors.groupingBy(s10 -> s10.endsWith("w") ? "w" : "c"));
 //        System.out.println(stringListMap);
+/////////////////////////////////////////////////////////////////////////////////////////////
 
+        /*Print the common elements from given two arrays*/
 
+        int[] arr1 = {2,3,4,5,6,1};
+        int[] arr2 = {2,3,8,9};
+
+        List<Integer> collect7 = Arrays.stream(arr1).filter(e1 -> Arrays.stream(arr2).anyMatch(e2 -> e2 == e1)).boxed().collect(Collectors.toList());
+//        System.out.println(collect7);
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        /*Reverse the elements in array in place*/
+
+        int[] arr3 = {1,2,3,4,5};
+
+        IntStream.rangeClosed(0, arr3.length/2).forEach(value -> {
+
+            int temp = arr3[value];
+            arr3[value] = arr3[arr3.length - 1 - value];
+            arr3[arr3.length - 1 - value] = temp;
+
+        });
+        System.out.println(Arrays.toString(arr3));
     }
 
 }
