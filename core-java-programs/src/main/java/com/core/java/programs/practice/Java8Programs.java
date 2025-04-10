@@ -335,6 +335,7 @@ public class Java8Programs {
 
         //below is for more than two arrays
         int[] array1 = Arrays.asList(arr5, arr6).stream().flatMapToInt(Arrays::stream).toArray();
+
         //OR
 
         int[] array3 = Stream.of(arr5, arr6).flatMapToInt(Arrays::stream).toArray();
@@ -358,6 +359,7 @@ public class Java8Programs {
 
         //this one only for two arrays
         String[] array6 = Stream.concat(Stream.of(strArray1), Stream.of(strArray2)).toArray(String[]::new);
+
 
 //        System.out.println(Arrays.toString(array6));
 
