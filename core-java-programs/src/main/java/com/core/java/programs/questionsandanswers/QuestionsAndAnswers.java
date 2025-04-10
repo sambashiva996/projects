@@ -23,6 +23,9 @@ public class QuestionsAndAnswers {
     * 17. What is functional interface?
     * 18. What is diff btw functional and normal interfaces?
     * 19. What are aggregation and composition?
+    * 20. What are short circuit operations in java 8 streams?
+    * 21. What are the business scenarios for abstract class and interface?
+    * 22. HashSet internal flow?
     *
     * */
 

@@ -16,6 +16,7 @@ public class Java8Programs {
         /*Print prime Numbers in java8*/
 
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 
         /*Java 8*/
@@ -154,7 +155,7 @@ public class Java8Programs {
 //        System.out.println(numStartWith1);
 //////////////////////////////////////////////////////////////////////////////////////////
 
-        /*using String join method print all elements separated with -*/
+        /*Using String join method prints all elements separated with '-' */
 
         List<String> joinStr = Arrays.asList("2", "4", "5", "6");
         String join = String.join("-", joinStr);
@@ -194,7 +195,9 @@ public class Java8Programs {
 //        System.out.println(collect2);
 /////////////////////////////////////////////////////////////////////////////////////////
 
-        /*print count of each vowel from given string*/
+        /*
+        * Print count of each vowel from given string
+        * */
         String s5 = "sambashivuduambati";
         List<Character> characterList = Arrays.asList('a', 'e', 'i', 'o', 'u');
 
@@ -205,7 +208,7 @@ public class Java8Programs {
 //        System.out.println(collect3);
 ////////////////////////////////////////////////////////////////////////////////////////
 
-        /*rotate array of integers by given number like 2 and 2 numbers should be rotate */
+        /* Rotate an array of integers by given number like 2 and 2 numbers should be rotated */
         int[] arr = {1,2,3,4,5,6};
         int rotate = 2;
 
@@ -248,7 +251,7 @@ public class Java8Programs {
 //        System.out.println(collect4);
 /// ///////////////////////////////////////////////////////////////////////////////////
 
-        /*find average of even numbers from given array*/
+        /*find average of even numbers from a given array*/
         Integer i[]={1,2,3,4,5,6,7,8};
 
         double asDouble = Arrays.stream(i).mapToInt(m -> m).filter(f -> f % 2 == 0).average().getAsDouble();
@@ -257,7 +260,7 @@ public class Java8Programs {
 //        System.out.println(asDouble);
 ////////////////////////////////////////////////////////////////////////////////////////
 
-        /*Print char and its count in such way order from given array*/
+        /*Print char and its count in such a way order from a given array*/
         String str ="aabbbcccc";
 
         //out put : a2b3c4
@@ -270,7 +273,7 @@ public class Java8Programs {
 //        System.out.println(stringWithCount);
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-        /* Find 5th highest grade of student
+        /* Find the 5th highest grade of a student
          */
 
         Student collect6 = Student.getStudentList().stream()
