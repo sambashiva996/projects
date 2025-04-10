@@ -2,10 +2,12 @@ package com.core.java.programs.practice;
 
 import com.core.java.programs.model.Student;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Java8Programs {
 
@@ -323,7 +325,42 @@ public class Java8Programs {
             arr3[arr3.length - 1 - value] = temp;
 
         });
-        System.out.println(Arrays.toString(arr3));
+//        System.out.println(Arrays.toString(arr3));
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+        /*Concatenate two arrays in java8 using streams*/
+
+        int[] arr5 = {1,2,3,4};
+        int[] arr6 = {5,6,7,8};
+
+        //below is for more than two arrays
+        int[] array1 = Arrays.asList(arr5, arr6).stream().flatMapToInt(Arrays::stream).toArray();
+        //OR
+
+        int[] array3 = Stream.of(arr5, arr6).flatMapToInt(Arrays::stream).toArray();
+
+        // OR
+
+        //this one only for two arrays
+        int[] array2 = IntStream.concat(IntStream.of(arr5), IntStream.of(arr6)).toArray();
+
+        String[] strArray1 = {"samba", "shivudu"};
+        String[] strArray2 = {"ambati"};
+
+        //below is for more than two arrays
+        String[] array4 = Arrays.asList(strArray1, strArray2).stream().flatMap(Arrays::stream).toArray(String[]::new);
+
+        //OR
+
+        String[] array5 = Stream.of(strArray1, strArray2).flatMap(Arrays::stream).toArray(String[]::new);
+
+        //OR
+
+        //this one only for two arrays
+        String[] array6 = Stream.concat(Stream.of(strArray1), Stream.of(strArray2)).toArray(String[]::new);
+
+//        System.out.println(Arrays.toString(array6));
+
     }
 
 }
