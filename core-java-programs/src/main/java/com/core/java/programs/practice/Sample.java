@@ -4,6 +4,10 @@ import com.core.java.programs.model.CreditCard;
 import com.core.java.programs.model.Student;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 
 
 public class Sample {
@@ -22,8 +26,5 @@ public class Sample {
         List<String> list = Arrays.asList("good", "morning");
 
         String str = "{[()]}";
-
-
-
     }
 }

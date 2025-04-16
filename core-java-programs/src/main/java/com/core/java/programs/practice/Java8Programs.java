@@ -27,7 +27,13 @@ public class Java8Programs {
                 .map(String::toLowerCase)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-//        System.out.println(charAndCountOfChars);
+        //OR
+
+        //Without empty spaces
+        Map<String, Long> charAndCountOfChars1 = Arrays.stream(s.replaceAll(" ", "").split(""))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        System.out.println(charAndCountOfChars1);
 /// //////////////////////////////////////////////////////////////////////////////////////////
 
         /*print all duplicate elements from given string*/
@@ -113,7 +119,7 @@ public class Java8Programs {
 //        System.out.println(secondHighestElement.get());
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-        /*print longest string from given array*/
+        /*print the longest string from a given array*/
 
         String[] strArray = {"samba", "shivudu", "ambati"};
 
@@ -142,7 +148,7 @@ public class Java8Programs {
 //        System.out.println(smallestStr);
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-       /*print all elements who start with 1 from given array*/
+       /*print all elements who start with 1 from a given array*/
 
        int[] intArray = {2,4,1,6,11,12,8};
 
@@ -172,7 +178,7 @@ public class Java8Programs {
 //        System.out.println(collect);
 ////////////////////////////////////////////////////////////////////////////////////////
 
-        /*convert String Array to character array*/
+        /*convert String Array to a character array*/
         List<String> list = Arrays.asList("samba", "shivudu");
 
         char[] charArray = list.stream()

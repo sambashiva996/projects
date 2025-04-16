@@ -316,7 +316,7 @@ public class CoreJavaPrograms {
         * */
     }
 
-    // Helper function to reverse array from index 'start' to 'end'
+    // Helper function to reverse an array from index 'start' to 'end'
     private static void reverse(int[] arr, int start, int end) {
         while (start < end) {
             int temp = arr[start];

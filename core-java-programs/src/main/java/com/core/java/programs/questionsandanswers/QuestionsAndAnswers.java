@@ -26,6 +26,7 @@ public class QuestionsAndAnswers {
     * 20. What are short circuit operations in java 8 streams?
     * 21. What are the business scenarios for abstract class and interface?
     * 22. HashSet internal flow?
+    * 23. Create notifications using an Observer Pattern and like event subscribes, and if a user subscribes they will get only subscribed event in java
     *
     * */
 
@@ -42,13 +43,16 @@ public class QuestionsAndAnswers {
    * 7. Spring security with JWT
    * 8. How does Caching work in spring boot and implementation?
    * 9. How to create triple ton class in spring boot?
-   * 10.How to lock table in a database and manage in spring boot?
-   * 11.How to use two diff database schemas in spring boot?
-   * 12.How to config two diff databases in spring boot?
-   * 13.How to load bean based on a property file or by giving class name? (i.e.: @ConditionalOnProperty annotation)
-   * 14.How many ways spring boot applications communicate?
-   * 15.How health check done for databases in spring boot?
-   * 16.What are the spring cloud dependencies?
+   * 10. How to lock table in a database and manage in spring boot?
+   * 11. How to use two diff database schemas in spring boot?
+   * 12. How to config two diff databases in spring boot?
+   * 13. How to load bean based on a property file or by giving class name? (i.e.: @ConditionalOnProperty annotation)
+   * 14. How many ways spring boot applications communicate?
+   * 15. How health check done for databases in spring boot?
+   * 16. What are the spring cloud dependencies and Spring boot starter/parent?
+   * 17. What is n+1 problem in spring data jpa?
+   * 18. Explain about Many-to-Many association in hibernate/jpa ()
+   * 19. What is optimistic and pessimistic locks in JPA and how to achieve it?
    * */
 
     /*
