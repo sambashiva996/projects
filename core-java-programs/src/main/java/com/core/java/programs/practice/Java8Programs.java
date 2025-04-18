@@ -30,10 +30,11 @@ public class Java8Programs {
         //OR
 
         //Without empty spaces
-        Map<String, Long> charAndCountOfChars1 = Arrays.stream(s.replaceAll(" ", "").split(""))
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Map<String, Long> charAndCountOfChars1 = Arrays.stream(s.replaceAll(" ", "")
+                        .split(""))
+                        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        System.out.println(charAndCountOfChars1);
+//        System.out.println(charAndCountOfChars1);
 /// //////////////////////////////////////////////////////////////////////////////////////////
 
         /*print all duplicate elements from given string*/
@@ -84,7 +85,7 @@ public class Java8Programs {
                 .entrySet().stream()
                 .filter(f -> f.getValue() > 1)
                 .map(Map.Entry::getKey).findFirst();
-        optionalString.ifPresent(System.out::println);
+//        optionalString.ifPresent(System.out::println);
 
 //        System.out.println(firstNonRepeatChar.get());
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -123,28 +124,19 @@ public class Java8Programs {
 
         String[] strArray = {"samba", "shivudu", "ambati"};
 
-        String longestString = Arrays.stream(strArray)
-                .sorted((c1,c2) -> c2.length()-c1.length())
-                .findFirst()
-                .get();
+        String longestString = Arrays.stream(strArray).sorted((c1,c2) -> c2.length()-c1.length()).findFirst().get();
         //OR using max method
-        String longestString1 = Arrays.stream(strArray)
-                .max(Comparator.comparing(String::length))
-                .get();
+        String longestString1 = Arrays.stream(strArray).max(Comparator.comparing(String::length)).get();
 
         //OR using reduce method
-        String s4 = Arrays.stream(strArray)
-                .reduce((w1, w2) -> w1.length() > w2.length() ? w1 : w2)
-                .get();
+        String s4 = Arrays.stream(strArray).reduce((w1, w2) -> w1.length() > w2.length() ? w1 : w2).get();
 
 //        System.out.println(s4);
 ////////////////////////////////////////////////////////////////////////////////////////////
 
         /*print smallest string from given array*/
 
-        String smallestStr = Arrays.stream(strArray)
-                .min(Comparator.comparing(String::length))
-                .get();
+        String smallestStr = Arrays.stream(strArray).min(Comparator.comparing(String::length)).get();
 //        System.out.println(smallestStr);
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -181,22 +173,16 @@ public class Java8Programs {
         /*convert String Array to a character array*/
         List<String> list = Arrays.asList("samba", "shivudu");
 
-        char[] charArray = list.stream()
-                .collect(Collectors.joining())
-                .toCharArray();
+        char[] charArray = list.stream().collect(Collectors.joining()).toCharArray();
 
         //OR
 
-        List<String> collect11 = list.stream().map(m -> Arrays.asList(m.split("")))
-                .flatMap(List::stream).collect(Collectors.toList());
+        List<String> collect11 = list.stream().map(m -> Arrays.asList(m.split(""))).flatMap(List::stream).collect(Collectors.toList());
 //        System.out.println(collect11);
 
         //OR
 
-        List<Character> collect2 = list.stream()
-                .flatMapToInt(String::chars)
-                .mapToObj(m -> (char) m)
-                .collect(Collectors.toList());
+        List<Character> collect2 = list.stream().flatMapToInt(String::chars).mapToObj(m -> (char) m).collect(Collectors.toList());
 
 //        System.out.println(collect2);
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -248,9 +234,9 @@ public class Java8Programs {
                 .map(m -> map.get(Integer.parseInt(m)))
                 .filter(Objects::nonNull)
                 .map(m -> Arrays.asList(m.split("")))
-                .reduce((r1, r2) ->
-                        r1.stream().flatMap(f ->
-                                r2.stream().map(f1 -> f + f1))
+                .reduce((r1, r2) -> r1.stream()
+                        .flatMap(f -> r2.stream()
+                                .map(f1 -> f + f1))
                                 .collect(Collectors.toList()))
                 .orElse(Collections.emptyList());
 
@@ -371,6 +357,36 @@ public class Java8Programs {
 
 
 //        System.out.println(Arrays.toString(array6));
+
+        /*
+        * Print duplicate second the highest number from given array
+        * */
+        int[] array7 = {1,2,3,4,4,5,5,6,6,6,7,7,7,8,8,8};
+
+        Arrays.stream(array7)
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new, Collectors.counting()))
+                .entrySet().stream()
+                .sorted(Map.Entry.<Integer, Long>comparingByValue().reversed()
+                        .thenComparing(Map.Entry.<Integer, Long>comparingByKey().reversed()))
+                .map(integerLongEntry -> {
+                    Map<Integer, Long> mapp = new LinkedHashMap<>();
+                    if (mapp.containsValue(integerLongEntry.getValue())){
+
+                    }else {}
+                    return new HashSet();
+                });
+//        System.out.println(collect8);
+
+        /*
+        * Given an integer array nums, find three numbers whose product is maximum and return the maximum product.
+          Input = 1,2,3,4
+          Output – 24 use streams
+        * */
+
+        int[] array8 = {1,2,3,4};
+
+
 
     }
 

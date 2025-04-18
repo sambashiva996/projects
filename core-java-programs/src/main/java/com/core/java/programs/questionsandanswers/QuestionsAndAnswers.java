@@ -27,6 +27,7 @@ public class QuestionsAndAnswers {
     * 21. What are the business scenarios for abstract class and interface?
     * 22. HashSet internal flow?
     * 23. Create notifications using an Observer Pattern and like event subscribes, and if a user subscribes they will get only subscribed event in java
+    * 24. Execute parallel tasks using parallel streams in java
     *
     * */
 
@@ -57,12 +58,14 @@ public class QuestionsAndAnswers {
 
     /*
     * SQL:
-    * 1. Can you please write down an SQL query to get a 'nth' the highest salary from an Employee table?
+    * 1. Can you please write down an SQL query to get a 'nth' the highest salary from an Employee table and using a sub query also?
     * 2. Write a query for JOINS
     * 3. Write a query for UNION and UNION ALL
     * 4. What are ACID properties and how transaction integrity works
     * 5. What are the new DDL features?
-    * 6.What is config server?
+    * 6. What is config server?
+    * 7. Print list of Departments whose employees have more than 10
+    * 8. Print each employee belongs department
     *
      * */
 

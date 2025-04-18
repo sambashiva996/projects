@@ -3,6 +3,7 @@ package com.core.java.programs.practice;
 import com.core.java.programs.model.Student;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StudentJava8Programs {
@@ -85,6 +86,11 @@ public class StudentJava8Programs {
         /**/
         List<Student> collect12 = studentList.stream().map(Arrays::asList).collect(Collectors.flatMapping(m -> m.stream(), Collectors.toList()));
         System.out.println(collect12);
+        /**/
+        String s = studentList.stream().collect(Collectors.groupingBy(Student::getDepartment, Collectors.counting()))
+                .entrySet().stream().max(Comparator.comparing(Map.Entry::getValue))
+                .map(Map.Entry::getKey).get();
+        System.out.println(s);
 
     }
 }
