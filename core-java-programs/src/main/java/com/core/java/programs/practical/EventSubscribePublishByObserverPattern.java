@@ -4,7 +4,7 @@ import lombok.Getter;
 
 import java.util.*;
 
-public class EventObserverDemo {
+public class EventSubscribePublishByObserverPattern {
 
     public static void main(String[] args) {
         /*

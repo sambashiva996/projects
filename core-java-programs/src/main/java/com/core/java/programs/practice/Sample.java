@@ -29,7 +29,11 @@ public class Sample {
 
         int[] array7 = {1,2,3,4,4,5,5,6,6,6,7,7,7,8,8,8};
 
-        Arrays.stream(array7).boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream().sorted(Map.Entry.<Integer, Long>comparingByValue().reversed());
+        List<Map.Entry<Integer, Long>> collect = Arrays.stream(array7).boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream().sorted(Map.Entry.<Integer, Long>comparingByValue().reversed()).collect(Collectors.toList());
+
+        int[] array8 = {1,2,3,4};
+
+
     }
 }
