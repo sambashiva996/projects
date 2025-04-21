@@ -26,6 +26,7 @@ public abstract class Product {
                 '}';
     }
 
+    
     private String getSUKCode() {
         return brand+(int)(Math.random()*1000);
     }

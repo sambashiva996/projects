@@ -7,6 +7,38 @@ public class Demo {
     public static void main(String[] args) {
 
 
+//        Server 1 Return 3
+//        Server 2 Return 4
+//        Server 3 Return 5
+//        Server 4 Return 4
+//        Server 5 Return 3
+
+        Map<String, String> map = new HashMap<>();
+        Map<String, List<String>> map1 = new HashMap<>();
+        map.put("Server 1"," Return 3");
+        map.put("Server 2"," Return 4");
+        map.put("Server 3"," Return 5");
+        map.put("Server 4"," Return 4");
+        map.put("Server 5"," Return 3");
+//        Map<String, List<String>> map2 = map.entrySet().stream().collect(Collectors.groupingBy(Map.Entry::getValue));
+
+        Set<Map.Entry<String, String>> entries = map.entrySet();
+        for (Map.Entry<String, String> entry : entries){
+            List<String> list = new ArrayList<>();
+            if (map1.containsKey(entry.getValue())){
+                list.add(entry.getKey());
+                map1.put(entry.getValue(), list);
+            }else {
+//                List<String> list = new ArrayList<>();
+                list.add(entry.getKey());
+                map1.put(entry.getValue(), list);
+            }
+
+        }
+        System.out.println(map1);
+
+        /// ////////////////
+
         List<Integer> l1= Arrays.asList(1,3,5,8,9,4,2,null);
         List<Integer> l2= Arrays.asList(1,4,7,9,23,24);
         List<List<Integer>> flatList = new ArrayList<>();
